@@ -8,12 +8,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <!-- Bu iki link footerdaki sosyal medya simgeleri icin -->
+    <link href="~/lib/bootstrap/dist/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-social.css" rel="stylesheet" />
 
-    <!--
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-
-
-    -->
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
@@ -48,11 +46,24 @@
         </main>
     </div>
 
-        <footer class="border-top footer text-muted">
-            <div class="container">
+    <footer class="border-top footer text-muted">   <!-- Bu kisimda row classini kullanan divin icine simdilik 2 tane daha div acip sosyal medya ikonlarini denedim-->
+        <div class="row">
+            <div class="col-sm-8">
                 &copy; 2020 - MilliTakim - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
-        </footer>
+            <div class="col-sm-4">
+                <a class="btn btn-social-icon btn-twitter" style="float:right">
+                    <span class="fa fa-twitter"></span>
+                </a>
+                <a class="btn btn-social-icon btn-instagram" style="float:right">
+                    <span class="fa fa-instagram"></span>
+                </a>
+                <a class="btn btn-social-icon btn-facebook" style="float:right">
+                    <span class="fa fa-facebook"></span>
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
