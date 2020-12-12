@@ -1,0 +1,26 @@
+# Rules in this file were initially inferred by Visual Studio IntelliCode from the C:\Users\ÖMER\source\repos\MilliTakim\MilliTakim\wwwroot\css\ codebase based on best match to current usage at 12.12.2020
+# You can modify the rules from these initially generated values to suit your own policies
+# You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
+[*.cs]
+
+
+
+body {
+	margin-top: 50px;
+	
+
+}
+
+.modal-footer {
+	border-top: 0px;
+}
+
+#loginModal {
+	position: static;
+	left: auto;
+	top: auto;
+}
+
+body {
+	background-color: #580000;
+}
