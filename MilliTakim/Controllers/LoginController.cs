@@ -18,7 +18,10 @@ namespace MilliTakim.Controllers
             webContext = _webContext;
         }
 
-        
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         [HttpGet]
          public IActionResult GirisYap()
