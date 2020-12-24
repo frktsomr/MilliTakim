@@ -9,8 +9,8 @@ using MilliTakim.Models.Contexts;
 namespace MilliTakim.Migrations
 {
     [DbContext(typeof(WebContext))]
-    [Migration("20201224185239_futbolcu_class_olusturuldu")]
-    partial class futbolcu_class_olusturuldu
+    [Migration("20201224191824_panel")]
+    partial class panel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,24 @@ namespace MilliTakim.Migrations
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("MilliTakim.Models.Contexts.Admin", b =>
+                {
+                    b.Property<int>("adminId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("adminAd")
+                        .HasColumnType("Varchar(20)");
+
+                    b.Property<string>("adminSifre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("adminId");
+
+                    b.ToTable("admins");
+                });
 
             modelBuilder.Entity("MilliTakim.Models.Futbolcu", b =>
                 {

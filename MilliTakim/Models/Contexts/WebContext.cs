@@ -8,12 +8,13 @@ namespace MilliTakim.Models.Contexts
 {
     public class WebContext : DbContext
     {
+
         public WebContext(DbContextOptions<WebContext> options) : base(options)
         {
 
         }
 
         public DbSet<Futbolcu> futbolcu { get; set; }
-
+        public DbSet<Admin> admins { get; set; }
     }
 }

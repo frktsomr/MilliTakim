@@ -18,6 +18,24 @@ namespace MilliTakim.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("MilliTakim.Models.Contexts.Admin", b =>
+                {
+                    b.Property<int>("adminId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("adminAd")
+                        .HasColumnType("Varchar(20)");
+
+                    b.Property<string>("adminSifre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("adminId");
+
+                    b.ToTable("admins");
+                });
+
             modelBuilder.Entity("MilliTakim.Models.Futbolcu", b =>
                 {
                     b.Property<int>("playerId")

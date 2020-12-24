@@ -10,6 +10,7 @@ namespace MilliTakim.Models
     {
         [Key]
         public int playerId { get; set; }
-       
+        
+
     }
 }

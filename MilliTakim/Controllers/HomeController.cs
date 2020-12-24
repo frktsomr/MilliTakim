@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MilliTakim.Models;
 using System;
@@ -9,8 +10,11 @@ using System.Threading.Tasks;
 
 namespace MilliTakim.Controllers
 {
+
     public class HomeController : Controller
     {
+      
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
