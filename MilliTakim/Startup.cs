@@ -27,16 +27,9 @@ namespace MilliTakim
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddDbContext<WebContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddAuthentication(
-                CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
-                {
-                    x.LoginPath = "/Login/GirisYap";
-                }
-                );
-            
         }
 
 
@@ -61,6 +54,7 @@ namespace MilliTakim
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -68,6 +62,7 @@ namespace MilliTakim
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
 
           
