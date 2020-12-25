@@ -14,6 +14,5 @@ namespace MilliTakim.Models.Contexts
 
         }
         public DbSet<Futbolcu> futbolcu { get; set; }
-        public DbSet<Admin> admins { get; set; }
     }
 }
