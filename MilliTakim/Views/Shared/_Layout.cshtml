@@ -19,19 +19,33 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
+                <a class="navbar-brand" asp-page = "/Home/Index">Anasayfa</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Tarihçe</a></li>
+                <li><a href="#">Futbolcularımız</a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Teknik Ekip <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Page 1-1</a></li>
-                        <li><a href="#">Page 1-2</a></li>
-                        <li><a href="#">Page 1-3</a></li>
+                        <li><a href="#">Teknik Direktör</a></li>
+                        <li><a href="#">Yardımcı Antrenörler</a></li>
+                        <li><a href="#">Sağlıkçılarımız</a></li>
+                        <li><a href="#">Malzemecilerimiz</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Page 2</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Galeri <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Formalarımız</a></li>
+                        <li><a href="#">Oyuncularımız</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">İstatistikler</a></li>
+                <li><a href="#">Fikstür</a></li>
+                <li><a href="#">Yaklaşan Etkinlikler</a></li>
+                <li><a href="#">Sponsorlarımız</a></li>
+                <li><a href="#">Bilet Al</a></li>
+                <li><a href="#">Mağaza</a></li>
             </ul>
             <partial name="_LoginPartial.cshtml" />
         </div>
