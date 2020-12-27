@@ -22,9 +22,11 @@ namespace MilliTakim.Models
         public string futbolcuTwitter { get; set; }
         [Required]
         [Display(Name = "Yaş")]
-        public int Yas { get; set; }
+        public int futbolcuYas { get; set; }
         [Display(Name = "Market Değeri")]
-        public long marketDegeri { get; set; }
+        public long futbolcuMarketDegeri { get; set; }
+
+        public byte[] ProfilePicture { get; set; }
 
     }
 }

@@ -19,7 +19,6 @@ namespace MilliTakim.Areas.Identity
                 services.AddDbContext<AuthDbContext>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("AuthDbContextConnection")));
-
                 services.AddDefaultIdentity<AuthUser>(options =>
                 {
                     options.SignIn.RequireConfirmedAccount = false;
@@ -29,7 +28,7 @@ namespace MilliTakim.Areas.Identity
                     options.Password.RequiredUniqueChars = 0;
                     options.Password.RequireNonAlphanumeric = false;
                 })
-                    .AddEntityFrameworkStores<AuthDbContext>();
+                .AddRoles<IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
             });
         }
     }

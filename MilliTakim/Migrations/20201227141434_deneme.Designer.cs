@@ -10,8 +10,8 @@ using MilliTakim.Data;
 namespace MilliTakim.Migrations
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20201225202314_telefon_deneme")]
-    partial class telefon_deneme
+    [Migration("20201227141434_deneme")]
+    partial class deneme
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -196,16 +196,20 @@ namespace MilliTakim.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Soyad")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("Varchar(20)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");

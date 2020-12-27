@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -23,6 +25,7 @@ namespace MilliTakim.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
+        [Display(Name = "E-mail")]
         public string Username { get; set; }
 
         [TempData]
@@ -37,6 +40,19 @@ namespace MilliTakim.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Phone number")]
             [StringLength(10, ErrorMessage = "Lutfen telefon numaranizi dogru giriniz", MinimumLength = 10)]
             public string PhoneNumber { get; set; }
+
+            [Display(Name = "Ad")]
+            [RegularExpression("^([a-zA-Z]+\\s)*[a-zA-Z]+$", ErrorMessage = "Lutfen Gecerli Bir isim giriniz")]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Lutfen Gecerli bir isim giriniz"), StringLength(20, ErrorMessage = "Lutfen Gecerli bir isim giriniz")]
+            public string FirstName { get; set; }
+            [Display(Name = "Soyad")]
+            [Required(AllowEmptyStrings = false, ErrorMessage = "Lutfen Gecerli bir Soyadi giriniz"), StringLength(20, ErrorMessage = "Lutfen Gecerli bir Soyadi giriniz")]
+            [RegularExpression("^([a-zA-Z]+\\s)*[a-zA-Z]+$", ErrorMessage = "Lutfen Gecerli Bir soyad giriniz")]
+            public string LastName { get; set; }
+
+            [Display(Name = "Profil Fotoğrafı")]
+            public byte[] ProfilePicture { get; set; }
+
         }
 
         private async Task LoadAsync(AuthUser user)
@@ -44,11 +60,18 @@ namespace MilliTakim.Areas.Identity.Pages.Account.Manage
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
+            var firstName = user.Ad;
+            var lastName = user.Soyad;
+            var profilePicture = user.ProfilePicture;
+
             Username = userName;
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                FirstName = firstName,
+                LastName = lastName,
+                ProfilePicture = profilePicture
             };
         }
 
@@ -88,6 +111,40 @@ namespace MilliTakim.Areas.Identity.Pages.Account.Manage
                     return RedirectToPage();
                 }
             }
+
+            var firstName = user.Ad;
+            var lastName = user.Soyad;
+            if (Input.FirstName != firstName)
+            {
+                user.Ad = Input.FirstName;
+                var adResult = await _userManager.UpdateAsync(user);
+                if (!adResult.Succeeded)
+                {
+                    StatusMessage = "Unexpected error when trying to set Ad.";
+                    return RedirectToPage();
+                }
+            }
+            if (Input.LastName != lastName)
+            {
+                user.Soyad = Input.LastName;
+                var soyadResult = await _userManager.UpdateAsync(user);
+                if (!soyadResult.Succeeded)
+                {
+                    StatusMessage = "Unexpected error when trying to set phone number.";
+                    return RedirectToPage();
+                }
+            }
+            if (Request.Form.Files.Count > 0)
+            {
+                IFormFile file = Request.Form.Files.FirstOrDefault();
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    user.ProfilePicture = dataStream.ToArray();
+                }
+                await _userManager.UpdateAsync(user);
+            }
+
 
             await _signInManager.RefreshSignInAsync(user);
             StatusMessage = "Your profile has been updated";

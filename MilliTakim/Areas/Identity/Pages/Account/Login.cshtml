@@ -25,6 +25,7 @@
                             <input asp-for="Input.Password" class="form-control input-lg" placeholder="Sifre" />
                             <span asp-validation-for="Input.Password" class="text-danger"></span>
                         </div>
+                        
                         <div class="form-group">
                             <div class="checkbox">
                                 <label asp-for="Input.RememberMe">
@@ -33,15 +34,18 @@
                                 </label>
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-lg btn-block">Giris Yap</button>
                         </div>
                         <div class="form-group">
+                            <!--
                             <p>
                                 <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                             </p>
+                            -->
                             <p>
-                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Kayıt Ol</a>
                             </p>
                         </div>
                     </form>

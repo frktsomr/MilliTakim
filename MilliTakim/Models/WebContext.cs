@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MilliTakim.Models.Contexts
+namespace MilliTakim.Models
 {
     public class WebContext : DbContext
     {

@@ -9,7 +9,7 @@ using MilliTakim.Areas.Identity.Data;
 
 namespace MilliTakim.Data
 {
-    public class AuthDbContext : IdentityDbContext<AuthUser>
+    public class AuthDbContext : IdentityDbContext<AuthUser,IdentityRole,string>
     {
         public AuthDbContext(DbContextOptions<AuthDbContext> options)
             : base(options)
