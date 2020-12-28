@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MilliTakim.Migrations
+namespace MilliTakim.Migrations.AuthDb
 {
-    public partial class deneme : Migration
+    public partial class deneme2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

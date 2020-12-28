@@ -1,12 +1,30 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MilliTakim.Migrations.Web
+namespace MilliTakim.Migrations
 {
-    public partial class webdeneme : Migration
+    public partial class deneme : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "bilet",
+                columns: table => new
+                {
+                    biletId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    macAdi = table.Column<string>(nullable: true),
+                    biletFiyat = table.Column<int>(nullable: false),
+                    biletAdet = table.Column<int>(nullable: false),
+                    macYer = table.Column<string>(nullable: true),
+                    macSaati = table.Column<string>(nullable: true),
+                    macTarihi = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_bilet", x => x.biletId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "futbolcu",
                 columns: table => new
@@ -29,6 +47,9 @@ namespace MilliTakim.Migrations.Web
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "bilet");
+
             migrationBuilder.DropTable(
                 name: "futbolcu");
         }

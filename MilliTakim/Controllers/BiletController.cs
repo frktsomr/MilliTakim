@@ -1,76 +1,79 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MilliTakim.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MilliTakim.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace MilliTakim.Controllers
 {
-    public class FutbolcuController : Controller
+    public class BiletController : Controller
     {
         private readonly WebContext _context;
-        public FutbolcuController(WebContext context)
+        public BiletController(WebContext context)
         {
             _context = context;
         }
         public async Task<IActionResult> Index()
         {
-            var webContext = await _context.futbolcu.ToListAsync();
-            ViewData["futbolcu"] = new Futbolcu();
+            var webContext = await _context.bilet.ToListAsync();
+            ViewData["bilet"] = new Bilet();
             return View(webContext);
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> FutbolcuEkle(Futbolcu futbolcu)
+        public async Task<IActionResult> BiletEkle(Bilet bilet)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(futbolcu);
+                _context.Add(bilet);
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction("Index");
         }
 
+
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> FutbolcuSil(int? id)
+        public async Task<IActionResult> BiletSil(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var _futbolcu = await _context.futbolcu.FindAsync(id);
-            if (_futbolcu == null)
+            var _bilet = await _context.bilet.FindAsync(id);
+            if (_bilet == null)
             {
                 return NotFound();
             }
-            _context.futbolcu.Remove(_futbolcu);
+            _context.bilet.Remove(_bilet);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
         [Authorize(Roles = "Admin")]
         [HttpGet]
-        public async Task<IActionResult> FutbolcuDuzenle(int? id)
+        public async Task<IActionResult> BiletDuzenle(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var _futbolcu = await _context.futbolcu.FindAsync(id);
-            if (_futbolcu == null)
+            var _bilet = await _context.bilet.FindAsync(id);
+            if (_bilet == null)
             {
                 return NotFound();
             }
-            return View(_futbolcu);
+            return View(_bilet);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> FutbolcuDuzenle(Futbolcu futbolcu,int id)
+        public async Task<IActionResult> BiletDuzenle(Bilet bilet, int id)
         {
-            if (id != futbolcu.playerId)
+            if (id != bilet.biletId)
             {
                 return NotFound();
             }
@@ -78,12 +81,12 @@ namespace MilliTakim.Controllers
             {
                 try
                 {
-                    _context.Update(futbolcu);
+                    _context.Update(bilet);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FutbolcuExists(futbolcu.playerId))
+                    if (!BiletExists(bilet.biletId))
                     {
                         return NotFound();
                     }
@@ -93,12 +96,29 @@ namespace MilliTakim.Controllers
                     }
                 }
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
-        private bool FutbolcuExists(int id)
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult BiletSatinAl(int id)
         {
-            return _context.futbolcu.Any(e => e.playerId == id);
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult BiletSatinAl()
+        {
+            return View();
+        }
+
+
+        private bool BiletExists(int id)
+        {
+            return _context.bilet.Any(e => e.biletId == id);
         }
     }
 }
+
