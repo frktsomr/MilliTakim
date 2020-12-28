@@ -15,6 +15,8 @@ namespace MilliTakim.Controllers
         public BiletController(WebContext context)
         {
             _context = context;
+
+
         }
         public async Task<IActionResult> Index()
         {
