@@ -4,6 +4,7 @@
 @inject SignInManager<AuthUser> SignInManager
 @inject UserManager<AuthUser> UserManager
 @{ 
+    
     var futbolcu = ViewData["futbolcu"] as Futbolcu;
 }
 <!DOCTYPE html>
@@ -12,7 +13,6 @@
     <meta charset="utf-8" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/futbolcu.css" rel="stylesheet" />
-
 </head>
 <body>
 
@@ -73,16 +73,17 @@
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                                 <h5 class="mb-0">@Html.DisplayFor(modelItem => item.futbolcuAd) @Html.DisplayFor(modelItem => item.futbolcuSoyad)</h5><span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuYas)</span>
                                 <ul class="social mb-0 list-inline mt-3">
-                                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
-                                    <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.facebook.com" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.twitter.com" class="social-link"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.instagram.com" class="social-link"><i class="fa fa-instagram"></i></a></li>
+                                    <li class="list-inline-item"><a href="https://www.linkedin.com" class="social-link"><i class="fa fa-linkedin"></i></a></li>
                                 </ul>
                                 @if (SignInManager.IsSignedIn(User))
                                 {
                                     @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
                                     {
                                         <a asp-action="FutbolcuSil" asp-route-id="@item.playerId">Sil</a>
+                                        <a asp-action="FutbolcuDuzenle" asp-route-id="@item.playerId">Duzenle</a>
                                     }
                                 }
                             </div>

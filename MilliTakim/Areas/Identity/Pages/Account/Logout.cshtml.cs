@@ -25,6 +25,7 @@ namespace MilliTakim.Areas.Identity.Pages.Account
 
         public void OnGet()
         {
+            //return RedirectToAction("Areas/Identity/OnPost");
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null)

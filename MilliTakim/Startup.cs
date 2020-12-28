@@ -35,6 +35,7 @@ namespace MilliTakim
             services.AddRazorPages();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddDbContext<WebContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             /*
             services.AddAuthorization(options =>
             {
