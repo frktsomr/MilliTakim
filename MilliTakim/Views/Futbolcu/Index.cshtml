@@ -7,14 +7,6 @@
     
     var futbolcu = ViewData["futbolcu"] as Futbolcu;
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/futbolcu.css" rel="stylesheet" />
-</head>
-<body>
 
     <div class="container py-5">
         @if (SignInManager.IsSignedIn(User))
@@ -68,7 +60,7 @@
                 <div class="row text-center">
                     @foreach (var item in Model)
                     {
-                        <div class="col-xl-3 col-sm-6 mb-5">
+                        <div class="col-xl-4 col-sm-6 mb-5">
                             <div class="bg-white rounded shadow-sm py-5 px-4">
                                 <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                                 <h5 class="mb-0">@Html.DisplayFor(modelItem => item.futbolcuAd) @Html.DisplayFor(modelItem => item.futbolcuSoyad)</h5><span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuYas)</span>
@@ -93,5 +85,3 @@
             }
         </div>
     </div>
-</body>
-</html>

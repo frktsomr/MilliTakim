@@ -5,58 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MilliTakim</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <!-- Bu iki link footerdaki sosyal medya simgeleri icin -->
+    <script src="~/lib/bootstrap/dist/js/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/font-awesome.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-social.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
-
+    <link href="~/css/sosyal_medya.css" rel="stylesheet" />
+    <link href="~/css/futbolcu.css" rel="stylesheet" />
 </head>
 <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="#">Tarihçe</a></li>
-                <li><a href="#">Futbolcularımız</a></li>
-                <li><a href="#">Bilet Al</a></li>
-                <li><a href="#">Mağaza</a></li>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tarihçe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Futbolcu" asp-action="Index">Futbolcularımız</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Bilet Al</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Mağaza</a>
+                </li>
             </ul>
             <partial name="_LoginPartial.cshtml" />
         </div>
     </nav>
-
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">   <!-- Bu kisimda row classini kullanan divin icine simdilik 2 tane daha div acip sosyal medya ikonlarini denedim-->
+    <footer class="border-top footer text-muted">
         <div class="row">
             <div class="col-sm-8">
                 &copy; 2020 - MilliTakim - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
-            <div class="col-sm-4">
-                <a class="btn btn-social-icon btn-twitter" style="float:right">
-                    <span class="fa fa-twitter"></span>
-                </a>
-                <a class="btn btn-social-icon btn-instagram" style="float:right">
-                    <span class="fa fa-instagram"></span>
-                </a>
-                <a class="btn btn-social-icon btn-facebook" style="float:right">
-                    <span class="fa fa-facebook"></span>
-                </a>
+            <div class="ml-auto">
+                <div class="template-demo"> <button onclick="window.location.href = 'https://www.facebook.com'" type="button" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></button> <button onclick="window.location.href = 'https://www.youtube.com'" type="button" class="btn btn-social-icon btn-youtube"><i class="fa fa-youtube"></i></button> <button onclick="window.location.href = 'https://www.twitter.com'" type="button" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></button><button onclick="window.location.href = 'https://www.instagram.com'" type="button" class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></button> </div>
             </div>
         </div>
     </footer>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
