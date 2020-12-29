@@ -4,20 +4,21 @@ using Microsoft.EntityFrameworkCore;
 using MilliTakim.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MilliTakim.Controllers
 {
+    [Authorize]
     public class BiletController : Controller
     {
         private readonly WebContext _context;
         public BiletController(WebContext context)
         {
             _context = context;
-
-
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var webContext = await _context.bilet.ToListAsync();
@@ -42,12 +43,12 @@ namespace MilliTakim.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             var _bilet = await _context.bilet.FindAsync(id);
             if (_bilet == null)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             _context.bilet.Remove(_bilet);
             await _context.SaveChangesAsync();
@@ -61,12 +62,12 @@ namespace MilliTakim.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             var _bilet = await _context.bilet.FindAsync(id);
             if (_bilet == null)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             return View(_bilet);
         }
@@ -77,7 +78,7 @@ namespace MilliTakim.Controllers
         {
             if (id != bilet.biletId)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             if (ModelState.IsValid)
             {
@@ -90,7 +91,7 @@ namespace MilliTakim.Controllers
                 {
                     if (!BiletExists(bilet.biletId))
                     {
-                        return NotFound();
+                        return View("Bulunamadi");
                     }
                     else
                     {
@@ -103,17 +104,48 @@ namespace MilliTakim.Controllers
 
 
         [HttpGet]
-        [Authorize]
-        public IActionResult BiletSatinAl(int id)
+        public async Task<IActionResult> BiletSatinAl(int?id)
         {
-            return View();
+            if (id == null)
+            {
+                return View("Bulunamadi");
+            }
+            var _bilet = await _context.bilet.FindAsync(id);
+            if (_bilet == null)
+            {
+                return View("Bulunamadi");
+            }
+            return View(_bilet);
         }
 
-        [Authorize]
         [HttpPost]
-        public IActionResult BiletSatinAl()
+        public async Task<IActionResult> BiletSatinAl(Bilet bilet, int id)
         {
-            return View();
+            if (id != bilet.biletId || bilet.biletAdet == 0)
+            {
+                return View("Bulunamadi");
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    bilet.biletAdet = bilet.biletAdet-1;
+                    _context.Update(bilet);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BiletExists(bilet.biletId))
+                    {
+                        return View("Bulunamadi");
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return RedirectToAction("Index");
         }
 
 

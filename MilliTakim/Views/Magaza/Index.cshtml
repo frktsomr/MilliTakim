@@ -1,0 +1,97 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using MilliTakim.Areas.Identity.Data
+@model IEnumerable<MilliTakim.Models.Magaza>
+@inject SignInManager<AuthUser> SignInManager
+@inject UserManager<AuthUser> UserManager
+@{
+
+    var magaza = ViewData["magaza"] as Magaza;
+}
+
+<link href="~/css/magaza.css" rel="stylesheet" />
+
+@if (SignInManager.IsSignedIn(User))
+{
+    @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
+    {
+        <dl class="row">
+            <dt class="col-sm-10">
+                @Html.DisplayNameFor(model => magaza.urunAdi)
+                @Html.DisplayNameFor(model => magaza.fiyat)
+                @Html.DisplayNameFor(model => magaza.beden)
+            </dt>
+        </dl>
+        <form asp-action="MagazaUrunEkle">
+
+            <input asp-for="@magaza.urunAdi" class="form-control" />
+            <span asp-validation-for="@magaza.urunAdi" class="text-danger"></span>
+
+            <input asp-for="@magaza.fiyat" class="form-control" />
+            <span asp-validation-for="@magaza.fiyat" class="text-danger"></span>
+
+            <input asp-for="@magaza.beden" asp-format="{0:dd/MM/yyyy HH:mm}" class="form-control" />
+            <span asp-validation-for="@magaza.beden" class="text-danger"></span>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Ekle</button>
+        </form>
+    }
+}
+
+
+
+<div class="container padding-bottom-3x mb-1">
+    <!-- Alert-->
+    <!-- Shopping Cart-->
+    <br /><br /><br />
+    @if (Model != null)
+    {
+<div class="table-responsive shopping-cart">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <div class="product-item">
+                            <a class="product-thumb" href="#"><img src="https://via.placeholder.com/220x180/FF0000/000000" alt="Product"></a>
+                            <div class="product-info">
+                                <h4 class="product-title"><a href="#">@item.urunAdi</a></h4><span><em>Size:</em>@item.beden</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="count-input">
+                            <select class="form-control">
+                                <option>0</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td class="text-center text-lg text-medium">@item.fiyat</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+        <div class="shopping-cart-footer">
+            <div class="column">
+            </div>
+            <div class="column text-lg">Subtotal: <span class="text-medium">$289.68</span></div>
+        </div>
+        <div class="shopping-cart-footer">
+            <div class="column"><a class="btn btn-success" asp-action="MagazaSatinAl">Checkout</a></div>
+        </div>
+    }
+
+</div>

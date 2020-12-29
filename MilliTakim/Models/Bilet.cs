@@ -10,11 +10,19 @@ namespace MilliTakim.Models
     {
         [Key]
         public int biletId { get; set; }
+        [Required]
+        [DataType(DataType.Text,ErrorMessage = "Lutfen Gecerli Bir Karsilasma Adi Giriniz")]
         public string macAdi { get; set; }
+        [Required]
+        [RegularExpression("^[1-9]+$",ErrorMessage = "Lutfen Gecerli Bir Fiyat Giriniz")]
         public int biletFiyat { get; set; }
+        [Required]
+        [RegularExpression("^[1-9]+$", ErrorMessage = "Lutfen Gecerli Bir Sayi Giriniz")]
         public int biletAdet { get; set; }
+        [Required]
+        [DataType(DataType.Text, ErrorMessage = "Lutfen Gecerli Bir Karsilasma Adi Giriniz")]
         public string macYer { get; set; }
-        public string macSaati { get; set; }
+        [Required]
         public DateTime macTarihi { get; set; }
     }
 }

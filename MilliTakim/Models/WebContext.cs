@@ -15,5 +15,6 @@ namespace MilliTakim.Models
         }
         public DbSet<Futbolcu> futbolcu { get; set; }
         public DbSet<Bilet> bilet { get; set; }
+        public DbSet<Magaza> magaza { get; set; }
     }
 }

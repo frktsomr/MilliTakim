@@ -12,8 +12,6 @@
     <link href="~/lib/bootstrap/dist/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/sosyal_medya.css" rel="stylesheet" />
-
-
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -36,7 +34,7 @@
                     <a class="nav-link" asp-area="" asp-controller="Bilet" asp-action="Index">Bilet Al</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Mağaza</a>
+                    <a class="nav-link" asp-area="" asp-controller="Magaza" asp-action="Index">Mağaza</a>
                 </li>
             </ul>
             <partial name="_LoginPartial.cshtml" />
@@ -47,16 +45,16 @@
             @RenderBody()
         </main>
     </div>
-        <footer class="border-top footer text-muted">
-            <div class="row">
-                <div class="col-sm-8">
-                    &copy; 2020 - MilliTakim - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                </div>
-                <div class="ml-auto">
-                    <div class="template-demo"> <button onclick="window.location.href = 'https://www.facebook.com'" type="button" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></button> <button onclick="window.location.href = 'https://www.youtube.com'" type="button" class="btn btn-social-icon btn-youtube"><i class="fa fa-youtube"></i></button> <button onclick="window.location.href = 'https://www.twitter.com'" type="button" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></button><button onclick="window.location.href = 'https://www.instagram.com'" type="button" class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></button> </div>
-                </div>
+    <footer class="border-top footer text-muted">
+        <div class="row">
+            <div class="col-sm-8">
+                &copy; 2020 - MilliTakim - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
-        </footer>
+            <div class="ml-auto">
+                <div class="template-demo"> <button onclick="window.location.href = 'https://www.facebook.com'" type="button" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></button> <button onclick="window.location.href = 'https://www.youtube.com'" type="button" class="btn btn-social-icon btn-youtube"><i class="fa fa-youtube"></i></button> <button onclick="window.location.href = 'https://www.twitter.com'" type="button" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></button><button onclick="window.location.href = 'https://www.instagram.com'" type="button" class="btn btn-social-icon btn-instagram"><i class="fa fa-instagram"></i></button> </div>
+            </div>
+        </div>
+    </footer>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

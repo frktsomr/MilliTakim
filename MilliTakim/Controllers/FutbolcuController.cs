@@ -39,12 +39,12 @@ namespace MilliTakim.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             var _futbolcu = await _context.futbolcu.FindAsync(id);
             if (_futbolcu == null)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             _context.futbolcu.Remove(_futbolcu);
             await _context.SaveChangesAsync();
@@ -56,12 +56,12 @@ namespace MilliTakim.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             var _futbolcu = await _context.futbolcu.FindAsync(id);
             if (_futbolcu == null)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             return View(_futbolcu);
         }
@@ -72,7 +72,7 @@ namespace MilliTakim.Controllers
         {
             if (id != futbolcu.playerId)
             {
-                return NotFound();
+                return View("Bulunamadi");
             }
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace MilliTakim.Controllers
                 {
                     if (!FutbolcuExists(futbolcu.playerId))
                     {
-                        return NotFound();
+                        return View("Bulunamadi");
                     }
                     else
                     {

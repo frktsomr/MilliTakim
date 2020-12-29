@@ -18,6 +18,7 @@
                     @Html.DisplayNameFor(model => model.futbolcuAd)
                     @Html.DisplayNameFor(model => model.futbolcuSoyad)
                     @Html.DisplayNameFor(model => model.futbolcuYas)
+                    @Html.DisplayNameFor(model => model.futbolcuMevki)
                     @Html.DisplayNameFor(model => model.futbolcuMarketDegeri)
                     @Html.DisplayNameFor(model => model.futbolcuInsta)
                     @Html.DisplayNameFor(model => model.futbolcuTwitter)
@@ -43,6 +44,11 @@
                 <input asp-for="@futbolcu.futbolcuTwitter" class="form-control" />
                 <span asp-validation-for="@futbolcu.futbolcuTwitter" class="text-danger"></span>
 
+                <select asp-for="@futbolcu.futbolcuMevki" asp-items="Html.GetEnumSelectList<Futbolcu.Mevki>()">
+                    <option selected="selected" value="">Lutfen Bir Mevki Seciniz</option>
+                </select>
+                <span asp-validation-for="@futbolcu.futbolcuMevki" class="text-danger"></span>
+
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Ekle</button>
             </form>
         }
@@ -63,7 +69,10 @@
                     <div class="col-xl-4 col-sm-6 mb-5">
                         <div class="bg-white rounded shadow-sm py-5 px-4">
                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                            <h5 class="mb-0">@Html.DisplayFor(modelItem => item.futbolcuAd) @Html.DisplayFor(modelItem => item.futbolcuSoyad)</h5><span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuYas)</span>
+                            <h5 class="mb-0">@Html.DisplayFor(modelItem => item.futbolcuAd) @Html.DisplayFor(modelItem => item.futbolcuSoyad)</h5>
+                            <span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuYas)</span>
+                            <span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuMevki)</span>
+                            <span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuMarketDegeri)</span>
                             <ul class="social mb-0 list-inline mt-3">
                                 <li class="list-inline-item"><a href="https://www.facebook.com" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
                                 <li class="list-inline-item"><a href="https://www.twitter.com" class="social-link"><i class="fa fa-twitter"></i></a></li>
@@ -85,3 +94,7 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

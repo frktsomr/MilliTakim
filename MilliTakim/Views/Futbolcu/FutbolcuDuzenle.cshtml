@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="FutbolcuDuzenle">
+        <form method="post" asp-action="FutbolcuDuzenle">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="playerId" />
             <div class="form-group">
@@ -17,8 +17,35 @@
             </div>
             <div class="form-group">
                 <label asp-for="futbolcuSoyad" class="control-label"></label>
-                <input asp-for="futbolcuSoyad" class="form-control" >
+                <input asp-for="futbolcuSoyad" class="form-control">
                 <span asp-validation-for="futbolcuSoyad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="futbolcuYas" class="control-label"></label>
+                <input asp-for="futbolcuYas" class="form-control">
+                <span asp-validation-for="futbolcuYas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="futbolcuMarketDegeri" class="control-label"></label>
+                <select asp-for="futbolcuMevki" asp-items="Html.GetEnumSelectList<Futbolcu.Mevki>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="futbolcuMevki" class="text-danger" />
+            </div>
+            <div class="form-group">
+                <label asp-for="futbolcuMarketDegeri" class="control-label"></label>
+                <input asp-for="futbolcuMarketDegeri" class="form-control">
+                <span asp-validation-for="futbolcuMarketDegeri" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="futbolcuInsta" class="control-label"></label>
+                <input asp-for="futbolcuInsta" class="form-control">
+                <span asp-validation-for="futbolcuInsta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="futbolcuTwitter" class="control-label"></label>
+                <input asp-for="futbolcuTwitter" class="form-control">
+                <span asp-validation-for="futbolcuTwitter" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -26,3 +53,6 @@
         </form>
     </div>
 </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
