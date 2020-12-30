@@ -10,7 +10,7 @@ using MilliTakim.Models;
 namespace MilliTakim.Migrations
 {
     [DbContext(typeof(WebContext))]
-    [Migration("20201229212222_deneme")]
+    [Migration("20201230115936_deneme")]
     partial class deneme
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

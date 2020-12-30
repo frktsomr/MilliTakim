@@ -34,9 +34,90 @@ namespace MilliTakim.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult MagazaSatinAl()
+        [HttpGet]
+        [Authorize]
+        public IActionResult MagazaSatinAl(int fiyat)
         {
+            ViewBag.total = fiyat;
             return View();
         }
+        [HttpPost]
+        [Authorize]
+        public IActionResult MagazaSatinAl()
+        {
+            return View("SatinAlmaBasarili");
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public async Task<IActionResult> MagazaDuzenle(int? id)
+        {
+            if (id == null)
+            {
+                return View("Bulunamadi");
+            }
+            var _magaza = await _context.magaza.FindAsync(id);
+            if (_magaza == null)
+            {
+                return View("Bulunamadi");
+            }
+            return View(_magaza);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<IActionResult> MagazaDuzenle(Magaza magaza, int id)
+        {
+            if (id != magaza.urunId)
+            {
+                return View("Bulunamadi");
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(magaza);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MagazaExists(magaza.urunId))
+                    {
+                        return View("Bulunamadi");
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> MagazaSil(int? id)
+        {
+            if (id == null)
+            {
+                return View("Bulunamadi");
+            }
+            var _magaza = await _context.magaza.FindAsync(id);
+            if (_magaza == null)
+            {
+                return View("Bulunamadi");
+            }
+            _context.magaza.Remove(_magaza);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+        private bool MagazaExists(int id)
+        {
+            return _context.magaza.Any(e => e.urunId == id);
+        }
+
     }
 }

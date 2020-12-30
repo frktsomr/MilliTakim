@@ -34,10 +34,10 @@
             <input asp-for="@bilet.macTarihi" asp-format="{0:dd/MM/yyyy HH:mm}" class="form-control" />
             <span asp-validation-for="@bilet.macTarihi" class="text-danger"></span>
 
-            <input asp-for="@bilet.biletFiyat" class="form-control" />
+            <input asp-for="@bilet.biletFiyat" class="form-control" value="" />
             <span asp-validation-for="@bilet.biletFiyat" class="text-danger"></span>
 
-            <input asp-for="@bilet.biletAdet" class="form-control" />
+            <input asp-for="@bilet.biletAdet" class="form-control" value="" />
             <span asp-validation-for="@bilet.biletAdet" class="text-danger"></span>
 
             <button type="submit" class="btn btn-primary btn-lg btn-block">Ekle</button>
