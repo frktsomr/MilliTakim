@@ -50,9 +50,9 @@ namespace MilliTakim.Migrations
                 {
                     urunId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    urunAdi = table.Column<string>(nullable: true),
-                    fiyat = table.Column<float>(nullable: false),
-                    beden = table.Column<string>(nullable: true),
+                    urunAdi = table.Column<string>(nullable: false),
+                    fiyat = table.Column<int>(nullable: false),
+                    beden = table.Column<int>(nullable: false),
                     ProfilePicture = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>

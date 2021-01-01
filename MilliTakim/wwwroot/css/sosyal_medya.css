@@ -77,7 +77,8 @@ body {
 }
 
 .template-demo {
-    margin-top: 0.5rem !important
+    margin-top: 0.3rem !important;
+
 }
 
 .btn.btn-rounded {
@@ -146,7 +147,7 @@ body {
 
 .btn-youtube {
     background: #e52d27;
-    color: #ffffff
+    color: #ffffff;
 }
 
 .btn-twitter {
@@ -202,5 +203,9 @@ body {
 .btn-instagram:hover,
 .btn-instagram:focus {
     background: #bf3322;
-    color: #ffffff
+    color: #ffffff;
+}
+
+.asd{
+    padding-bottom:5px;
 }

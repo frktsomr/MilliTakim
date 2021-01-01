@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MilliTakim.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,6 +30,15 @@ namespace MilliTakim.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Form.Files.Count > 0)
+                {
+                    IFormFile file = Request.Form.Files.FirstOrDefault();
+                    using (var dataStream = new MemoryStream())
+                    {
+                        await file.CopyToAsync(dataStream);
+                        magaza.ProfilePicture = dataStream.ToArray();
+                    }
+                }
                 _context.Add(magaza);
                 await _context.SaveChangesAsync();
             }
@@ -75,6 +86,15 @@ namespace MilliTakim.Controllers
             }
             if (ModelState.IsValid)
             {
+                if (Request.Form.Files.Count > 0)
+                {
+                    IFormFile file = Request.Form.Files.FirstOrDefault();
+                    using (var dataStream = new MemoryStream())
+                    {
+                        await file.CopyToAsync(dataStream);
+                        magaza.ProfilePicture = dataStream.ToArray();
+                    }
+                }
                 try
                 {
                     _context.Update(magaza);

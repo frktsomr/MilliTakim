@@ -14,7 +14,6 @@ namespace MilliTakim.Controllers
     public class BiletController : Controller
     {
         private readonly WebContext _context;
-
         public BiletController(WebContext context)
         {
             _context = context;
@@ -26,7 +25,6 @@ namespace MilliTakim.Controllers
             ViewData["bilet"] = new Bilet();
             return View(webContext);
         }
-
 
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> BiletEkle(Bilet bilet)

@@ -10,7 +10,7 @@ using MilliTakim.Models;
 namespace MilliTakim.Migrations
 {
     [DbContext(typeof(WebContext))]
-    [Migration("20201230115936_deneme")]
+    [Migration("20210101151031_deneme")]
     partial class deneme
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,13 +100,14 @@ namespace MilliTakim.Migrations
                     b.Property<byte[]>("ProfilePicture")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("beden")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("beden")
+                        .HasColumnType("int");
 
-                    b.Property<float>("fiyat")
-                        .HasColumnType("real");
+                    b.Property<int>("fiyat")
+                        .HasColumnType("int");
 
                     b.Property<string>("urunAdi")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("urunId");

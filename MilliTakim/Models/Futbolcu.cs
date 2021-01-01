@@ -19,9 +19,11 @@ namespace MilliTakim.Models
         [Key]
         public int playerId { get; set; }
         [Display(Name = "Adı")]
+        [DataType(DataType.Text , ErrorMessage = "Lutfen Gecerli bir Ad giriniz")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Lutfen Gecerli bir Ad giriniz"), StringLength(20, ErrorMessage = "Lutfen Gecerli bir Ad giriniz")]
         public string futbolcuAd { get; set; }
         [Display(Name = "Soyadı")]
+        [DataType(DataType.Text, ErrorMessage = "Lutfen Gecerli bir Ad giriniz")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Lutfen Gecerli bir Soyadi giriniz"), StringLength(20, ErrorMessage = "Lutfen Gecerli bir Soyadi giriniz")]
         public string futbolcuSoyad { get; set; }
         [Display(Name = "Instagram")]
@@ -32,7 +34,7 @@ namespace MilliTakim.Models
         public string futbolcuTwitter { get; set; }
         [Required]
         [Display(Name = "Yaş")]
-        [Range(20,100,ErrorMessage = "Lutfen Gecerli Bir Yas Giriniz")]
+        [Range(16,100,ErrorMessage = "Lutfen Gecerli Bir Yas Giriniz (16-100)")]
 
         public int futbolcuYas { get; set; }
         [Required]
@@ -41,8 +43,8 @@ namespace MilliTakim.Models
         public Mevki futbolcuMevki { get; set; }
 
         [Display(Name = "Market Değeri")]
+        [RegularExpression("^[1-9]+([0-9])*$", ErrorMessage = "Lutfen Gecerli Bir Fiyat Giriniz")]
         public long futbolcuMarketDegeri { get; set; }
-
         public byte[] ProfilePicture { get; set; }
 
     }

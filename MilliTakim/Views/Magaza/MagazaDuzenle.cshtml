@@ -6,7 +6,7 @@
 @model MilliTakim.Models.Magaza
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="MagazaDuzenle">
+        <form asp-action="MagazaDuzenle" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="urunId" />
             <div class="form-group">
@@ -20,9 +20,24 @@
                 <span asp-validation-for="fiyat" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="beden" class="control-label"></label>
-                <input asp-for="beden" class="form-control">
-                <span asp-validation-for="beden" class="text-danger"></span>
+                <label asp-for="ProfilePicture" class="control-label"></label>
+                @if (Model.ProfilePicture != null)
+                {
+                    <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(Model.ProfilePicture))">
+                    <input type="hidden" asp-for="ProfilePicture" />
+                }
+                else
+                {
+                    <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="https://via.placeholder.com/220x180/FF0000/000000">
+                }
+                <input type="file"
+                       accept=".png,.jpg,.jpeg,.gif,.tif"
+                       asp-for="ProfilePicture"
+                       class="form-control"
+                       style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                       onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                <br />
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

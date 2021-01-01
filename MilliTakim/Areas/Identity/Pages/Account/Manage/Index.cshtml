@@ -30,7 +30,6 @@
                 <input asp-for="Input.PhoneNumber" class="form-control" />
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>          
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Input.ProfilePicture" style="width: 100%;"></label>
                     @if (Model.Input.ProfilePicture != null)
@@ -39,7 +38,7 @@
                     }
                     else
                     {
-                        <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="">
+                        <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="https://bootdey.com/img/Content/avatar/avatar7.png">
                     }
                     <input type="file"
                            accept=".png,.jpg,.jpeg,.gif,.tif"

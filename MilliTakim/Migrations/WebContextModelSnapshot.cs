@@ -98,13 +98,14 @@ namespace MilliTakim.Migrations
                     b.Property<byte[]>("ProfilePicture")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("beden")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("beden")
+                        .HasColumnType("int");
 
-                    b.Property<float>("fiyat")
-                        .HasColumnType("real");
+                    b.Property<int>("fiyat")
+                        .HasColumnType("int");
 
                     b.Property<string>("urunAdi")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("urunId");

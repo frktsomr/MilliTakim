@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Identity;
 
 namespace MilliTakim.Areas.Identity.Data
 {
-    // Add profile data for application users by adding properties to the AuthUser class
     public class AuthUser : IdentityUser
     {
         [Column(TypeName = "Varchar(20)")]
@@ -19,7 +18,6 @@ namespace MilliTakim.Areas.Identity.Data
         [RegularExpression("^([a-zA-Z]+\\s)*[a-zA-Z]+$")]
         public string Soyad { get; set; }
 
-       // [Column(TypeName = "ByteData")]
         public byte[] ProfilePicture { get; set; }
     }
 }

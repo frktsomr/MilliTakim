@@ -10,7 +10,7 @@ using MilliTakim.Data;
 namespace MilliTakim.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20201230120133_deneme2")]
+    [Migration("20210101151100_deneme2")]
     partial class deneme2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

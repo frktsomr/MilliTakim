@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form method="post" asp-action="FutbolcuDuzenle">
+        <form method="post" asp-action="FutbolcuDuzenle" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="playerId" />
             <div class="form-group">
@@ -26,7 +26,7 @@
                 <span asp-validation-for="futbolcuYas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="futbolcuMarketDegeri" class="control-label"></label>
+                <label asp-for="futbolcuMevki" class="control-label"></label>
                 <select asp-for="futbolcuMevki" asp-items="Html.GetEnumSelectList<Futbolcu.Mevki>()">
                     <option selected="selected" value="">Please select</option>
                 </select>
@@ -46,6 +46,26 @@
                 <label asp-for="futbolcuTwitter" class="control-label"></label>
                 <input asp-for="futbolcuTwitter" class="form-control">
                 <span asp-validation-for="futbolcuTwitter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfilePicture" class="control-label"></label>
+                @if (Model.ProfilePicture != null)
+                {
+                    <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(Model.ProfilePicture))">
+                    <input type="hidden" asp-for="ProfilePicture" />
+                }
+                else
+                {
+                    <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                }
+                <input type="file"
+                       accept=".png,.jpg,.jpeg,.gif,.tif"
+                       asp-for="ProfilePicture"
+                       class="form-control"
+                       style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                       onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                <br />
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

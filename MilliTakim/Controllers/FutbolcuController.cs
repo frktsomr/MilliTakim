@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using MilliTakim.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace MilliTakim.Controllers
 {
@@ -28,6 +30,15 @@ namespace MilliTakim.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Request.Form.Files.Count > 0)
+                {
+                    IFormFile file = Request.Form.Files.FirstOrDefault();
+                    using (var dataStream = new MemoryStream())
+                    {
+                        await file.CopyToAsync(dataStream);
+                        futbolcu.ProfilePicture = dataStream.ToArray();
+                    }
+                }
                 _context.Add(futbolcu);
                 await _context.SaveChangesAsync();
             }
@@ -76,6 +87,15 @@ namespace MilliTakim.Controllers
             }
             if (ModelState.IsValid)
             {
+                if (Request.Form.Files.Count > 0)
+                {
+                    IFormFile file = Request.Form.Files.FirstOrDefault();
+                    using (var dataStream = new MemoryStream())
+                    {
+                        await file.CopyToAsync(dataStream);
+                        futbolcu.ProfilePicture = dataStream.ToArray();
+                    }
+                }
                 try
                 {
                     _context.Update(futbolcu);

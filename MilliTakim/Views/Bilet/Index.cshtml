@@ -14,32 +14,27 @@
 {
     @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
     {
-        <dl class="row">
-            <dt class="col-sm-10">
-                @Html.DisplayNameFor(model => bilet.macAdi)
-                @Html.DisplayNameFor(model => bilet.macYer)
-                @Html.DisplayNameFor(model => bilet.macTarihi)
-                @Html.DisplayNameFor(model => bilet.biletFiyat)
-                @Html.DisplayNameFor(model => bilet.biletAdet)
-            </dt>
-        </dl>
         <form asp-action="BiletEkle">
-
+            @Html.DisplayNameFor(model => bilet.macAdi)
             <input asp-for="@bilet.macAdi" class="form-control" />
             <span asp-validation-for="@bilet.macAdi" class="text-danger"></span>
 
+            @Html.DisplayNameFor(model => bilet.macYer)
             <input asp-for="@bilet.macYer" class="form-control" />
             <span asp-validation-for="@bilet.macYer" class="text-danger"></span>
 
+            @Html.DisplayNameFor(model => bilet.macTarihi)
             <input asp-for="@bilet.macTarihi" asp-format="{0:dd/MM/yyyy HH:mm}" class="form-control" />
             <span asp-validation-for="@bilet.macTarihi" class="text-danger"></span>
 
+            @Html.DisplayNameFor(model => bilet.biletFiyat)
             <input asp-for="@bilet.biletFiyat" class="form-control" value="" />
             <span asp-validation-for="@bilet.biletFiyat" class="text-danger"></span>
 
+            @Html.DisplayNameFor(model => bilet.biletAdet)
             <input asp-for="@bilet.biletAdet" class="form-control" value="" />
             <span asp-validation-for="@bilet.biletAdet" class="text-danger"></span>
-
+            <br />
             <button type="submit" class="btn btn-primary btn-lg btn-block">Ekle</button>
         </form>
     }

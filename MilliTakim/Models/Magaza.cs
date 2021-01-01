@@ -20,9 +20,16 @@ namespace MilliTakim.Models
 
         [Key]
         public int urunId { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Lütfen Geçerli Bir Ad giriniz")]
+        [Display(Name = "Ürün Adı")]
         public string urunAdi { get; set; }
-        public float fiyat { get; set; }
-        public string beden { get; set; }
+        [Required]
+        [Display(Name = "Fiyat")]
+        [RegularExpression("^[1-9]+([0-9])*$", ErrorMessage = "Lütfen Geçerli Bir Fiyat Giriniz")]
+        public int fiyat { get; set; }
+        [Display(Name = "Beden ")]
+        public Beden beden { get; set; }
+        [Display(Name = "Ürün Fotoğrafı")]
         public byte[] ProfilePicture { get; set; }
     }
 }

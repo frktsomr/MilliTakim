@@ -7,12 +7,16 @@
 <ul class="navbar-nav ml-auto">
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item">
-            @if ((await UserManager.GetUserAsync(User)).ProfilePicture != null)
-            {
-                <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))"></a>
-            }
-        </li>
+    <li class="nav-item">
+        @if ((await UserManager.GetUserAsync(User)).ProfilePicture != null)
+        {
+            <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))"></a>
+        }
+        else
+        {
+            <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="https://bootdey.com/img/Content/avatar/avatar7.png"></a>
+        }
+    </li>
         <li class="nav-item">
             <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @((await UserManager.GetUserAsync(User)).Ad) @((await UserManager.GetUserAsync(User)).Soyad.First())</a>
         </li>
