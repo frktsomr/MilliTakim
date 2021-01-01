@@ -14,6 +14,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using MilliTakim.Areas.Identity.Data;
 using MilliTakim.Data;
+using System.Resources;
+using System.Reflection;
+using System.Globalization;
+using Microsoft.Extensions.Options;
 
 namespace MilliTakim
 {
@@ -31,23 +35,24 @@ namespace MilliTakim
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddSingleton(new ResourceManager("CustomerAPI.Rescources.Controllers.CustomerController", typeof(Startup).GetTypeInfo().Assembly));
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddDbContext<WebContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            /*
-            services.AddAuthorization(options =>
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddMvc().AddMvcLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+            services.Configure<RequestLocalizationOptions>(opt =>
             {
-                options.AddPolicy("AdminAcces", policy => policy.RequireRole("Admin"));
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("tr"),
+                    new CultureInfo("en")
+                };
+                opt.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("tr");
+                opt.SupportedCultures = supportedCultures;
+                opt.SupportedUICultures = supportedCultures;
             });
-            */
-
-            /*services.AddDefaultIdentity<IdentityUser>(
-        options => options.SignIn.RequireConfirmedAccount = true)
-        .AddRoles<IdentityRole>()
-        .AddEntityFrameworkStores<ApplicationDbContext>();
-            */
         }
 
 
@@ -114,6 +119,11 @@ namespace MilliTakim
 
             app.UseRouting();
 
+            //var supportedCultures = new[] { "tr", "en" };
+            //var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+            //app.UseRequestLocalization(localizationOptions);
+
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
             app.UseAuthentication();
             app.UseAuthorization();

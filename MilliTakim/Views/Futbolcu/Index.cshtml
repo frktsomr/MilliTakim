@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using MilliTakim.Areas.Identity.Data
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @model IEnumerable<MilliTakim.Models.Futbolcu>
 @inject SignInManager<AuthUser> SignInManager
 @inject UserManager<AuthUser> UserManager
@@ -14,19 +15,19 @@
         @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
         {
     <form asp-action="FutbolcuEkle" method="post" enctype="multipart/form-data">
-        @Html.DisplayNameFor(model => model.futbolcuAd)
+        @localizer[@Html.DisplayNameFor(model => model.futbolcuAd)]
         <input asp-for="@futbolcu.futbolcuAd" class="form-control" />
         <span asp-validation-for="@futbolcu.futbolcuAd" class="text-danger"></span>
 
-        @Html.DisplayNameFor(model => model.futbolcuSoyad)
+        @localizer[@Html.DisplayNameFor(model => model.futbolcuSoyad)]
         <input asp-for="@futbolcu.futbolcuSoyad" class="form-control" />
         <span asp-validation-for="@futbolcu.futbolcuSoyad" class="text-danger"></span>
 
-        @Html.DisplayNameFor(model => model.futbolcuYas)
+        @localizer[@Html.DisplayNameFor(model => model.futbolcuYas)]
         <input asp-for="@futbolcu.futbolcuYas" value="" class="form-control" />
         <span asp-validation-for="@futbolcu.futbolcuYas" class="text-danger"></span>
 
-        @Html.DisplayNameFor(model => model.futbolcuMarketDegeri)
+        @localizer[@Html.DisplayNameFor(model => model.futbolcuMarketDegeri)]
         <input asp-for="@futbolcu.futbolcuMarketDegeri" value="" class="form-control" />
         <span asp-validation-for="@futbolcu.futbolcuMarketDegeri" class="text-danger"></span>
 
@@ -38,13 +39,7 @@
         <input asp-for="@futbolcu.futbolcuTwitter" class="form-control" />
         <span asp-validation-for="@futbolcu.futbolcuTwitter" class="text-danger"></span>
 
-        @Html.DisplayNameFor(model => model.futbolcuMevki)<br />
-        <select asp-for="@futbolcu.futbolcuMevki" asp-items="Html.GetEnumSelectList<Futbolcu.Mevki>()">
-            <option selected="selected" value="">Lutfen Bir Mevki Seciniz</option>
-        </select><br />
-        <span asp-validation-for="@futbolcu.futbolcuMevki" class="text-danger"></span><br />
-
-        @Html.DisplayNameFor(model => model.ProfilePicture)<br />
+        @localizer[@Html.DisplayNameFor(model => model.ProfilePicture)]<br />
         <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="https://bootdey.com/img/Content/avatar/avatar7.png">
         <input type="file"
                accept=".png,.jpg,.jpeg,.gif,.tif"
@@ -54,14 +49,14 @@
                onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
         <span asp-validation-for="@futbolcu.ProfilePicture" class="text-danger"></span>
         <br />
-        <button type="submit" class="btn btn-primary btn-lg btn-block">Ekle</button>
+        <button type="submit" class="btn btn-primary btn-lg btn-block"> @localizer["Ekle"]</button>
     </form>
         }
     }
     <div class="row mb-4">
         <div class="col-lg-5">
-            <h2 class="display-4 font-weight-light">Futbolcularımız</h2>
-            <p class="font-italic text-muted">Türkiye Milli Takım Futbolcuları</p>
+            <h2 class="display-4 font-weight-light"> @localizer["Futbolcularımız"]</h2>
+            <p class="font-italic text-muted"> @localizer["Türkiye Milli Takım Futbolcuları"]</p>
         </div>
     </div>
     <div class="row text-center">
@@ -83,8 +78,7 @@
                             }
                             <h5 class="mb-0">@Html.DisplayFor(modelItem => item.futbolcuAd) @Html.DisplayFor(modelItem => item.futbolcuSoyad)</h5>
                             <span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuYas)</span>
-                            <span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuMevki)</span>
-                            <span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuMarketDegeri)</span>
+                            <span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuMarketDegeri)€</span>
                             <ul class="social mb-0 list-inline mt-3">
                                 @if (item.futbolcuInsta == null)
                                 {
@@ -107,8 +101,8 @@
                             {
                                 @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
                                 {
-                                    <a asp-action="FutbolcuSil" asp-route-id="@item.playerId">Sil</a>
-                                    <a asp-action="FutbolcuDuzenle" asp-route-id="@item.playerId">Duzenle</a>
+                        <a asp-action="FutbolcuSil" asp-route-id="@item.playerId"> @localizer["Sil"]</a>
+                        <a asp-action="FutbolcuDuzenle" asp-route-id="@item.playerId"> @localizer["Düzenle"]</a>
                                 }
                             }
                         </div>

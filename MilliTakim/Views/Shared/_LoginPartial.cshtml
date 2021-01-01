@@ -1,39 +1,39 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using MilliTakim.Areas.Identity.Data
-
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @inject SignInManager<AuthUser> SignInManager
 @inject UserManager<AuthUser> UserManager
 
 <ul class="navbar-nav ml-auto">
     @if (SignInManager.IsSignedIn(User))
     {
-    <li class="nav-item">
-        @if ((await UserManager.GetUserAsync(User)).ProfilePicture != null)
-        {
-            <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))"></a>
-        }
-        else
-        {
-            <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="https://bootdey.com/img/Content/avatar/avatar7.png"></a>
-        }
-    </li>
+        <li class="nav-item">
+            @if ((await UserManager.GetUserAsync(User)).ProfilePicture != null)
+            {
+                <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.ProfilePicture))"></a>
+            }
+            else
+            {
+                <a id="manage" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><img style="width:40px;height:40px; object-fit:cover; border-radius:30px" src="https://bootdey.com/img/Content/avatar/avatar7.png"></a>
+            }
+        </li>
         <li class="nav-item">
             <a id="manage" class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @((await UserManager.GetUserAsync(User)).Ad) @((await UserManager.GetUserAsync(User)).Soyad.First())</a>
         </li>
         <li class="nav-item">
             <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout">
-                <button id="logout" type="submit" class="nav-link btn btn-link">Logout</button>
+                <button id="logout" type="submit" class="nav-link btn btn-link">@localizer["Çıkış"]</button>
             </form>
         </li>
     }
     else
     {
-        
+
         <li class="nav-item">
-            <a class="nav-link" id="register" asp-area="Identity" asp-page="/Account/Register">Kayıt Ol</a>
+            <a class="nav-link" id="register" asp-area="Identity" asp-page="/Account/Register">@localizer["Kayıt Ol"]</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">Giriş Yap</a>
+            <a class="nav-link" id="login" asp-area="Identity" asp-page="/Account/Login">@localizer["Giriş Yap"]</a>
         </li>
     }
 </ul>

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,19 +24,22 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">@localizer["Anasayfa"]</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Tarihce">Tarihçe</a>
-                </li>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Tarihce">@localizer["Tarihçe"]</a>
+</li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Futbolcu" asp-action="Index">Futbolcularımız</a>
-                </li>
+                    <a class="nav-link" asp-area="" asp-controller="Futbolcu" asp-action="Index">@localizer["Futbolcularımız"]</a>
+</li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Bilet" asp-action="Index">Bilet Al</a>
-                </li>
+                    <a class="nav-link" asp-area="" asp-controller="Bilet" asp-action="Index">@localizer["Bilet Al"]</a>
+</li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Magaza" asp-action="Index">Mağaza</a>
+                    <a class="nav-link" asp-area="" asp-controller="Magaza" asp-action="Index">@localizer["Mağaza"]</a>
+</li>
+                <li>
+                    <partial name="_Culture" />
                 </li>
             </ul>
             <partial name="_LoginPartial.cshtml" />

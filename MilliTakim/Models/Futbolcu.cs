@@ -8,13 +8,6 @@ namespace MilliTakim.Models
 {
     public class Futbolcu
     {
-        public enum Mevki
-        {
-            Kaleci = 1,
-            Defans = 2,
-            Ortasaha = 3,
-            Forvet = 4
-        }
 
         [Key]
         public int playerId { get; set; }
@@ -35,16 +28,12 @@ namespace MilliTakim.Models
         [Required]
         [Display(Name = "Yaş")]
         [Range(16,100,ErrorMessage = "Lutfen Gecerli Bir Yas Giriniz (16-100)")]
-
         public int futbolcuYas { get; set; }
-        [Required]
-        [EnumDataType(typeof(Mevki))]
-        [Display(Name = "Mevki")]
-        public Mevki futbolcuMevki { get; set; }
 
         [Display(Name = "Market Değeri")]
         [RegularExpression("^[1-9]+([0-9])*$", ErrorMessage = "Lutfen Gecerli Bir Fiyat Giriniz")]
         public long futbolcuMarketDegeri { get; set; }
+        [Display(Name = "Profil Fotoğrafı")]
         public byte[] ProfilePicture { get; set; }
 
     }

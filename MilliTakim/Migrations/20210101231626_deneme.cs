@@ -35,7 +35,6 @@ namespace MilliTakim.Migrations
                     futbolcuInsta = table.Column<string>(nullable: true),
                     futbolcuTwitter = table.Column<string>(nullable: true),
                     futbolcuYas = table.Column<int>(nullable: false),
-                    futbolcuMevki = table.Column<int>(nullable: false),
                     futbolcuMarketDegeri = table.Column<long>(nullable: false),
                     ProfilePicture = table.Column<byte[]>(nullable: true)
                 },

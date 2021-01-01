@@ -69,9 +69,6 @@ namespace MilliTakim.Migrations
                     b.Property<long>("futbolcuMarketDegeri")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("futbolcuMevki")
-                        .HasColumnType("int");
-
                     b.Property<string>("futbolcuSoyad")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)")

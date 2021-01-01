@@ -10,7 +10,7 @@ using MilliTakim.Models;
 namespace MilliTakim.Migrations
 {
     [DbContext(typeof(WebContext))]
-    [Migration("20210101151031_deneme")]
+    [Migration("20210101231626_deneme")]
     partial class deneme
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,9 +70,6 @@ namespace MilliTakim.Migrations
 
                     b.Property<long>("futbolcuMarketDegeri")
                         .HasColumnType("bigint");
-
-                    b.Property<int>("futbolcuMevki")
-                        .HasColumnType("int");
 
                     b.Property<string>("futbolcuSoyad")
                         .IsRequired()

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Tarihçemiz" xml:space="preserve">
+    <value>Our History</value>
+  </data>
+  <data name="Türk sporunun ilk teşkilatı olan Türk İdman Cemiyetleri İttifakı'nın kurulmasının ardından Yusuf Ziya Öniş başkanlığında ilk Türk Futbol Federasyonu 1923 yılında Şehzadebaşı'ndaki Letafet Apartmanı salonunda yapılan toplantıda 'Futbol Hey'et - i Müttehidesi' adıyla kurulmuştur. Ardından FIFA'ya başvurulmuş ve Türkiye 21 Mayıs 1923 tarihinde FIFA'nın 26. üyesi olmuştur.FIFA üyesi Türkiye, ilk milli maçını Cumhuriyetin ilanından üç gün önce oynadı. 26 Ekim 1923 tarihinde İstanbul Taksim Stadı'nda Romanya'yla oynanan bu maç 2 - 2 sonuçlandı. Romanya karşısında 1 - 0 mağlup duruma düşen Millilerimiz, Zeki Rıza Sporel'in 32 ve 50'inci dakikalarda attığı iki golle öne geçmeyi başardı.Romanya'nın ikinci golüyle maç 2-2 berabere biten maçta Romanya'ya 2 gol atan Zeki Rıza Sporel, A Milli Takım'ın ilk golünü atarak tarihe geçti.Milli Takım, 17 Haziran 1924'te oynadıkları Finlandiya maçında ilk galibiyeti elde etti. Helsinki'de Helsingfors Stadı'nda oynanan maçta Fenerbahçeli Zeki Rıza Sporel, 4 golüyle Finlandiya ağlarını havalandırarak adını altın harflerle tarihe yazdırdı.Ardından gelen dönemde Milli Takım'ı 1924 Paris Olimpiyatları'na hazırlaması için İskoçya'dan Billy Hunter getirtilmiştir. Hunter, Türk futbolculara çağdaş futbolu tanıtan ve sistemli bir şekilde çalıştıran ilk teknik adam olmuştur. Yine 1924 Paris Olimpiyatları'nda Çekoslovakya'yla oynanan ve 5-2 kaybedilen maç, kayıtlara Milli Takım'ın yurtdışındaki ilk maçı olarak geçmiştir." xml:space="preserve">
+    <value>Following the establishment of the Turkish Sports Association, the first organization of Turkish sports, the first Turkish Football Federation was established under the chairmanship of Yusuf Ziya Öniş in 1923 at the meeting held in the Letafet Apartment Hall in Şehzadebaşı under the name of 'Football Hey'et - i Alliance'. Then Turkey has applied to FIFA and FIFA's 26 members on May 21, 1923 olmuştur.fıf by Turkey, three days before the proclamation of the Republic played their first international match. This match played with Romania on 26 October 1923 at Istanbul Taksim Stadium ended in 2 - 2. Our National Team, who lost 1-0 against Romania, managed to get ahead with two goals scored in the 32nd and 50th minutes of Zeki Rıza Sporel. He made history by scoring the first goal of the National Team. The National Team achieved the first victory in the Finland match they played on June 17, 1924. During the match played at Helsinki's Helsingfors Stadium, Fenerbahce Zeki Rıza Sporel made his name written in gold letters by airing the Finnish nets with 4 goals. Later, Billy Hunter was brought from Scotland to prepare the National Team for the 1924 Paris Olympics. Hunter was the first coach to introduce modern football to Turkish footballers and to operate it systematically. Again in the 1924 Paris Olympics, the match played against Czechoslovakia and lost 5-2 was recorded as the first match of the National Team abroad.</value>
+  </data>
+</root>
