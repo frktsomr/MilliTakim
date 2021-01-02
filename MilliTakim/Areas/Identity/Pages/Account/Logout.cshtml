@@ -3,8 +3,8 @@
 @{
     ViewData["Title"] = "Log out";
 }
-
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 <header>
-    <h1>@ViewData["Title"]</h1>
-    <p>You have successfully logged out of the application.</p>
+    <h1>@localizer["Çıkış Yap"]</h1>
+    <p>@localizer["Başarıyla çıkış yaptınız"].</p>
 </header>

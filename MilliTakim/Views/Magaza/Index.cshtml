@@ -7,14 +7,14 @@
 
     var magaza = ViewData["magaza"] as Magaza;
 }
-
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 <link href="~/css/magaza.css" rel="stylesheet" />
 <script>
     function updateQuotation(id) {
         var qty = parseInt(document.getElementById("qty_" + id).value);
         var price = parseInt(document.getElementById("price_" + id).innerHTML);
         var urun_total = qty * price;
-        document.getElementById("temptotal_" + id).innerHTML = urun_total;
+        document.getElementById("temptotal_" + id).innerHTML = urun_total + "₺";
     }
 
     function updateTotal() {
@@ -48,13 +48,11 @@
             {
                 if (parseInt(document.getElementById("qty_" + items[i]).value) != 0 && document.getElementById("beden_" + items[i]).value == "")
                 {
-                    alert("Lütfen Ürünler İçin Beden Seçtiğinizden Emin Olunuz");
                     control = false;
                     break;
                 }
             }
             if (price <= 0) {
-                alert("Lütfen Ürünler İçin Uygun Adedi Seçiniz");
                 url = "#";
             }
             else if (control == false)
@@ -76,15 +74,15 @@
     {
         <br />
         <form asp-action="MagazaUrunEkle" method="post" enctype="multipart/form-data">
-            @Html.DisplayNameFor(model => magaza.urunAdi)
+            @localizer[@Html.DisplayNameFor(model => magaza.urunAdi)]
             <input asp-for="@magaza.urunAdi" class="form-control" />
-            <span asp-validation-for="@magaza.urunAdi" class="text-danger"></span>
+            <span asp-validation-for="@magaza.urunAdi" class="text-danger"></span><br />
 
-            @Html.DisplayNameFor(model => magaza.fiyat)
+            @localizer[@Html.DisplayNameFor(model => magaza.fiyat)]
             <input asp-for="@magaza.fiyat" value="" class="form-control" />
             <span asp-validation-for="@magaza.fiyat" class="text-danger"></span><br />
 
-            @Html.DisplayNameFor(model => model.ProfilePicture)<br />
+            @localizer[@Html.DisplayNameFor(model => model.ProfilePicture)]<br />
             <img id="profilePicture" object-fit:cover" src="https://via.placeholder.com/220x180/FF0000/000000" style="width:220px;height:180px;">
             <input type="file"
                    accept=".png,.jpg,.jpeg,.gif,.tif"
@@ -95,7 +93,7 @@
             <span asp-validation-for="@magaza.ProfilePicture" class="text-danger"></span>
             <br />
 
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Ekle</button>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">@localizer["Ekle"]</button>
         </form>
     }
 }
@@ -111,10 +109,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Product Name</th>
-                        <th class="text-center">Quantity</th>
-                        <th class="text-center">Urun Fiyat</th>
-                        <th class="text-center">Toplam Urun Fiyat</th>
+                        <th>@localizer["Ürün Adı"]</th>
+                        <th class="text-center">@localizer["Adet"]</th>
+                        <th class="text-center">@localizer["Fiyat"]</th>
+                        <th class="text-center">@localizer["Toplam Ürün Fiyatı"]</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -134,9 +132,9 @@
                                     <div class="product-info">
                                         <h4 class="product-title"><a href="#">@item.urunAdi</a></h4>
                                         <span>
-                                            <em>@Html.DisplayNameFor(model => model.beden):</em>
+                                            <em>@localizer[@Html.DisplayNameFor(model => model.beden)]:</em>
                                             <select id="beden_@item.urunId" asp-for="@item.beden" asp-items="Html.GetEnumSelectList<Magaza.Beden>()">
-                                                <option selected="selected" value="">Lutfen Bir Beden Seciniz</option>
+                                                <option selected="selected" value="">@localizer["Lütfen Bir Beden Seçiniz"]</option>
                                             </select><br />
                                             <span asp-validation-for="@item.beden" class="text-danger"></span><br />
                                         </span>
@@ -144,8 +142,8 @@
                                         {
                                             @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
                                             {
-                                                <a asp-action="MagazaSil" asp-route-id="@item.urunId">Sil</a> <br />
-                                                <a asp-action="MagazaDuzenle" asp-route-id="@item.urunId">Duzenle</a>
+                                                <a asp-action="MagazaSil" asp-route-id="@item.urunId">@localizer["Sil"]</a> <br />
+                                                <a asp-action="MagazaDuzenle" asp-route-id="@item.urunId">@localizer["Düzenle"]</a>
                                             }
                                         }
                                     </div>
@@ -163,7 +161,7 @@
                                     </select>
                                 </div>
                             </td>
-                            <td class="text-center text-lg text-medium"><p id="price_@item.urunId">@item.fiyat</p></td>
+                            <td class="text-center text-lg text-medium"><p id="price_@item.urunId">@item.fiyat₺</p></td>
                             <td class="text-center"><p id="temptotal_@item.urunId" onchange="updateQuotation(@item.urunId); updateTotal();">0</p></td>
                         </tr>
                     }
@@ -173,10 +171,10 @@
         <div class="shopping-cart-footer">
             <div class="column">
             </div>
-            <div class="column text-lg">Toplam Fiyat: <span class="text-medium" id="total">0</span></div>
+            <div class="column text-lg">@localizer["Toplam Fiyat"]: <span class="text-medium" id="total">0</span>₺</div>
         </div>
         <div class="shopping-cart-footer">
-            <div class="column"><a id="btn" type="" class="btn btn-success" asp-action="MagazaSatinAl" asp-route-fiyat="asd">Checkout</a></div>
+            <div class="column"><a id="btn" type="" class="btn btn-success" asp-action="MagazaSatinAl" asp-route-fiyat="asd">@localizer["Satın Al"]</a></div>
         </div>
     }
 

@@ -4,68 +4,68 @@
 @{
 }
 @model MilliTakim.Models.Futbolcu
-
-<div class="row">
-    <div class="col-md-4">
-        <form method="post" asp-action="FutbolcuDuzenle" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="playerId" />
-            <div class="form-group">
-                <label asp-for="futbolcuAd" class="control-label"></label>
-                <input asp-for="futbolcuAd" class="form-control" />
-                <span asp-validation-for="futbolcuAd" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="futbolcuSoyad" class="control-label"></label>
-                <input asp-for="futbolcuSoyad" class="form-control">
-                <span asp-validation-for="futbolcuSoyad" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="futbolcuYas" class="control-label"></label>
-                <input asp-for="futbolcuYas" class="form-control">
-                <span asp-validation-for="futbolcuYas" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="futbolcuMarketDegeri" class="control-label"></label>
-                <input asp-for="futbolcuMarketDegeri" class="form-control">
-                <span asp-validation-for="futbolcuMarketDegeri" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="futbolcuInsta" class="control-label"></label>
-                <input asp-for="futbolcuInsta" class="form-control">
-                <span asp-validation-for="futbolcuInsta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="futbolcuTwitter" class="control-label"></label>
-                <input asp-for="futbolcuTwitter" class="form-control">
-                <span asp-validation-for="futbolcuTwitter" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProfilePicture" class="control-label"></label>
-                @if (Model.ProfilePicture != null)
-                {
-                    <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(Model.ProfilePicture))">
-                    <input type="hidden" asp-for="ProfilePicture" />
-                }
-                else
-                {
-                    <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="https://bootdey.com/img/Content/avatar/avatar7.png">
-                }
-                <input type="file"
-                       accept=".png,.jpg,.jpeg,.gif,.tif"
-                       asp-for="ProfilePicture"
-                       class="form-control"
-                       style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
-                       onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
-                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
-                <br />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post" asp-action="FutbolcuDuzenle" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="playerId" />
+                <div class="form-group">
+                    @localizer[@Html.DisplayNameFor(model => model.futbolcuAd)]
+                    <input asp-for="futbolcuAd" class="form-control" />
+                    <span asp-validation-for="futbolcuAd" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @localizer[@Html.DisplayNameFor(model => model.futbolcuSoyad)]
+                    <input asp-for="futbolcuSoyad" class="form-control">
+                    <span asp-validation-for="futbolcuSoyad" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @localizer[@Html.DisplayNameFor(model => model.futbolcuYas)]
+                    <input asp-for="futbolcuYas" class="form-control">
+                    <span asp-validation-for="futbolcuYas" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @localizer[@Html.DisplayNameFor(model => model.futbolcuMarketDegeri)]
+                    <input asp-for="futbolcuMarketDegeri" class="form-control">
+                    <span asp-validation-for="futbolcuMarketDegeri" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @localizer[@Html.DisplayNameFor(model => model.futbolcuInsta)]
+                    <input asp-for="futbolcuInsta" class="form-control">
+                    <span asp-validation-for="futbolcuInsta" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @localizer[@Html.DisplayNameFor(model => model.futbolcuTwitter)]
+                    <input asp-for="futbolcuTwitter" class="form-control">
+                    <span asp-validation-for="futbolcuTwitter" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @localizer[@Html.DisplayNameFor(model => model.ProfilePicture)]
+                    @if (Model.ProfilePicture != null)
+                    {
+                        <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(Model.ProfilePicture))">
+                        <input type="hidden" asp-for="ProfilePicture" />
+                    }
+                    else
+                    {
+                        <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                    }
+                    <input type="file"
+                           accept=".png,.jpg,.jpeg,.gif,.tif"
+                           asp-for="ProfilePicture"
+                           class="form-control"
+                           style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;"
+                           onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])" />
+                    <span asp-validation-for="ProfilePicture" class="text-danger"></span>
+                    <br />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="@localizer["Kaydet"]" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }

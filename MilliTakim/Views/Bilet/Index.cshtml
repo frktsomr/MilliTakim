@@ -7,6 +7,7 @@
 
     var bilet = ViewData["bilet"] as Bilet;
 }
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 
 <link href="~/css/bilet.css" rel="stylesheet" />
 
@@ -14,36 +15,36 @@
 {
     @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
     {
-        <form asp-action="BiletEkle">
-            @Html.DisplayNameFor(model => bilet.macAdi)
-            <input asp-for="@bilet.macAdi" class="form-control" />
-            <span asp-validation-for="@bilet.macAdi" class="text-danger"></span>
+<form asp-action="BiletEkle">
+    @localizer[@Html.DisplayNameFor(model => bilet.macAdi)]
+    <input asp-for="@bilet.macAdi" class="form-control" />
+    <span asp-validation-for="@bilet.macAdi" class="text-danger"></span><br />
 
-            @Html.DisplayNameFor(model => bilet.macYer)
-            <input asp-for="@bilet.macYer" class="form-control" />
-            <span asp-validation-for="@bilet.macYer" class="text-danger"></span>
+    @localizer[@Html.DisplayNameFor(model => bilet.macYer)]
+    <input asp-for="@bilet.macYer" class="form-control" />
+    <span asp-validation-for="@bilet.macYer" class="text-danger"></span><br />
 
-            @Html.DisplayNameFor(model => bilet.macTarihi)
-            <input asp-for="@bilet.macTarihi" asp-format="{0:dd/MM/yyyy HH:mm}" class="form-control" />
-            <span asp-validation-for="@bilet.macTarihi" class="text-danger"></span>
+    @localizer[@Html.DisplayNameFor(model => bilet.macTarihi)]
+    <input asp-for="@bilet.macTarihi" asp-format="{0:dd/MM/yyyy HH:mm}" class="form-control" />
+    <span asp-validation-for="@bilet.macTarihi" class="text-danger"></span><br />
 
-            @Html.DisplayNameFor(model => bilet.biletFiyat)
-            <input asp-for="@bilet.biletFiyat" class="form-control" value="" />
-            <span asp-validation-for="@bilet.biletFiyat" class="text-danger"></span>
+    @localizer[@Html.DisplayNameFor(model => bilet.biletFiyat)]
+    <input asp-for="@bilet.biletFiyat" class="form-control" value="" />
+    <span asp-validation-for="@bilet.biletFiyat" class="text-danger"></span><br />
 
-            @Html.DisplayNameFor(model => bilet.biletAdet)
-            <input asp-for="@bilet.biletAdet" class="form-control" value="" />
-            <span asp-validation-for="@bilet.biletAdet" class="text-danger"></span>
-            <br />
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Ekle</button>
-        </form>
+    @localizer[@Html.DisplayNameFor(model => bilet.biletAdet)]
+    <input asp-for="@bilet.biletAdet" class="form-control" value="" />
+    <span asp-validation-for="@bilet.biletAdet" class="text-danger"></span>
+    <br />
+    <button type="submit" class="btn btn-primary btn-lg btn-block">@localizer["Ekle"]</button>
+</form>
     }
 }
 
 
 
 <section class="container">
-    <h1>Events</h1>
+    <h1>@localizer["MAÇLAR"]</h1>
     @if (Model != null)
     {
         <div class="row">
@@ -77,29 +78,29 @@
                                 @Html.DisplayFor(modelItem => item.macYer)
                             </p>
                             <p>
-                                Kalan Bilet : @Html.DisplayFor(modelItem => item.biletAdet)
+                                @localizer["Kalan Bilet"] : @Html.DisplayFor(modelItem => item.biletAdet)
                             </p>
                         </div>
                         <br />
                         @if (DateTime.Today.Date >= item.macTarihi.Date)
                         {
-                            <a style="background-color:black" href="#">TARİHİ GEÇTİ</a>
+                            <a style="background-color:black" href="#">@localizer["TARİHİ GEÇTİ"]</a>
                         }
                         else if (item.biletAdet <= 0)
                         {
-                            <a style="background-color:gray" href="#">TÜKENDİ</a>
+                    <a style="background-color:gray" href="#">@localizer["TÜKENDİ"]</a>
                         }
                         else
                         {
-                            <a style="background-color: #F8504C" asp-area="" asp-controller="Bilet" asp-route-id="@item.biletId" asp-action="BiletSatinAl">SATIN AL</a>
+                    <a style="background-color: #F8504C" asp-area="" asp-controller="Bilet" asp-route-id="@item.biletId" asp-action="BiletSatinAl">@localizer["SATIN AL"]</a>
                         }
                     </section>
                     @if (SignInManager.IsSignedIn(User))
                     {
                         @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
                         {
-                            <a asp-action="BiletSil" asp-route-id="@item.biletId">Sil</a> <br />
-                            <a asp-action="BiletDuzenle" asp-route-id="@item.biletId">Duzenle</a>
+                            <a asp-action="BiletSil" asp-route-id="@item.biletId">@localizer["SİL"]</a> <br />
+                            <a asp-action="BiletDuzenle" asp-route-id="@item.biletId">@localizer["DÜZENLE"]</a>
                         }
                     }
                 </article>

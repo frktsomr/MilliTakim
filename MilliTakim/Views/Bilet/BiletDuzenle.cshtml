@@ -3,6 +3,7 @@
 *@
 @{
 }
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @model MilliTakim.Models.Bilet
 <div class="row">
     <div class="col-md-4">
@@ -10,32 +11,32 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="biletId" />
             <div class="form-group">
-                <label asp-for="macAdi" class="control-label"></label>
+                @localizer[@Html.DisplayNameFor(model => model.macAdi)]
                 <input asp-for="macAdi" class="form-control" />
                 <span asp-validation-for="macAdi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="macYer" class="control-label"></label>
+                @localizer[@Html.DisplayNameFor(model => model.macYer)]
                 <input asp-for="macYer" class="form-control">
                 <span asp-validation-for="macYer" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="macTarihi" class="control-label"></label>
+                @localizer[@Html.DisplayNameFor(model => model.macTarihi)]
                 <input asp-for="macTarihi" class="form-control">
                 <span asp-validation-for="macTarihi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="biletAdet" class="control-label"></label>
+                @localizer[@Html.DisplayNameFor(model => model.biletAdet)]
                 <input asp-for="biletAdet" class="form-control">
                 <span asp-validation-for="biletAdet" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="biletFiyat" class="control-label"></label>
+                @localizer[@Html.DisplayNameFor(model => model.biletFiyat)]
                 <input asp-for="biletFiyat" class="form-control">
                 <span asp-validation-for="biletFiyat" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="@localizer["Kaydet"]" class="btn btn-primary" />
             </div>
         </form>
     </div>

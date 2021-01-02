@@ -16,7 +16,7 @@ namespace MilliTakim.Models
         public string macAdi { get; set; }
         [Required]
         [Display(Name = "Bilet Fiyatı")]
-        [RegularExpression("^[1-9]+$",ErrorMessage = "Lutfen Gecerli Bir Fiyat Giriniz")]
+        [RegularExpression("^[1-9]+([0-9])*$", ErrorMessage = "Lutfen Gecerli Bir Fiyat Giriniz")]
         public int biletFiyat { get; set; }
         [Required]
         [Display(Name = "Bilet Adedi")]

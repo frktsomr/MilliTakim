@@ -4,6 +4,7 @@
 @{
 }
 @model MilliTakim.Models.Bilet
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 <link href="~/css/biletal.css" rel="stylesheet" />
 
 <div class="container">
@@ -18,12 +19,12 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <small>
-                                <strong>Expiry date:</strong> 10/16
+                                <strong>@localizer["Son Kullanma Tarihi"]:</strong> 10/16
                             </small>
                         </div>
                         <div class="col-sm-6 text-right">
                             <small>
-                                <strong>Name:</strong> David
+                                <strong>@localizer["Adı"]:</strong> David
                             </small>
                         </div>
                     </div>
@@ -38,12 +39,12 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <small>
-                                <strong>Expiry date:</strong> 10/16
+                                <strong>@localizer["Son Kullanma Tarihi"]:</strong> 10/16
                             </small>
                         </div>
                         <div class="col-sm-6 text-right">
                             <small>
-                                <strong>Name:</strong> Anna Smith
+                                <strong>@localizer["Adı"]:</strong> Anna Smith
                             </small>
                         </div>
                     </div>
@@ -58,12 +59,12 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <small>
-                                <strong>Expiry date:</strong> 10/16
+                                <strong>@localizer["Son Kullanma Tarihi"]:</strong> 10/16
                             </small>
                         </div>
                         <div class="col-sm-6 text-right">
                             <small>
-                                <strong>Name:</strong> Morgan
+                                <strong>@localizer["Adı"]:</strong> Morgan
                             </small>
                         </div>
                     </div>
@@ -77,7 +78,7 @@
 
                 <div class="ibox">
                     <div class="ibox-title">
-                        Payment method
+                        @localizer["Ödeme Metodu"]
                     </div>
                     <div class="ibox-content">
 
@@ -96,16 +97,10 @@
 
                                         <div class="row">
                                             <div class="col-md-10">
-                                                <h2>Summary</h2>
-                                                <strong>Product:</strong>: @Model.macAdi <br>
-                                                <strong>Price:</strong>: <span class="text-navy">₺@Model.biletFiyat</span>
+                                                <h2>@localizer["Özet"]</h2>
+                                                <strong>@localizer["Maç Adı"]</strong>: @Model.macAdi <br>
+                                                <strong>@localizer["Fiyat"]</strong>: <span class="text-navy">₺@Model.biletFiyat</span>
 
-                                                <p class="m-t">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                    nisi ut aliquip ex ea commodo consequat.
-                                                </p>
                                                 <form id="myform" method="post" asp-action="BiletSatinAl">
                                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                                     <input type="hidden" asp-for="biletId" />
@@ -116,7 +111,7 @@
                                                     <input type="hidden" asp-for="macYer" />
                                                     <a class="btn btn-success" onclick="document.getElementById('myform').submit()">
                                                         <i class="fa fa-cc-paypal">
-                                                            Purchase via PayPal
+                                                            @localizer["PayPal ile Ödeme Yap"]
                                                         </i>
                                                     </a>
                                                 </form>
@@ -133,7 +128,7 @@
                                         <i class="fa fa-cc-discover text-danger"></i>
                                     </div>
                                     <h5 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Credit Card</a>
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">@localizer["Kredi Kartı"]</a>
                                     </h5>
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse in">
@@ -141,22 +136,9 @@
 
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <h2>Summary</h2>
-                                                <strong>Product:</strong>: @Model.macAdi <br>
-                                                <strong>Price:</strong>: <span class="text-navy">₺@Model.biletFiyat</span>
-
-                                                <p class="m-t">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                    nisi ut aliquip ex ea commodo consequat.
-
-                                                </p>
-                                                <p>
-                                                    Duis aute irure dolor
-                                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                    nulla pariatur. Excepteur sint occaecat cupidatat.
-                                                </p>
+                                                <h2>@localizer["Özet"]</h2>
+                                                <strong>@localizer["Maç Adı"]:</strong>: @Model.macAdi <br>
+                                                <strong>@localizer["Fiyat"]:</strong>: <span class="text-navy">₺@Model.biletFiyat</span>
                                             </div>
                                             <div class="col-md-8">
                                                 <form role="form" id="payment-form" asp-action="BiletSatinAl">
@@ -170,7 +152,7 @@
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <div class="form-group">
-                                                                <label>CARD NUMBER</label>
+                                                                <label>@localizer["KART NUMARASI"]</label>
                                                                 <div class="input-group">
                                                                     <input type="text" pattern="[0-9]{16}" class="form-control" name="Number" placeholder="Valid Card Number" required="" maxlength="16">
                                                                     <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
@@ -181,13 +163,13 @@
                                                     <div class="row">
                                                         <div class="col-xs-7 col-md-7">
                                                             <div class="form-group">
-                                                                <label>EXPIRATION DATE</label>
+                                                                <label>@localizer["SON KULLANMA TARİHİ"]</label>
                                                                 <input type="text" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" class="form-control" name="Expiry" placeholder="MM / YY" required="">
                                                             </div>
                                                         </div>
                                                         <div class="col-xs-5 col-md-5 pull-right">
                                                             <div class="form-group">
-                                                                <label>CV CODE</label>
+                                                                <label>@localizer["CVC NUMARASI"]</label>
                                                                 <input type="text" pattern="[0-9]{3}" class="form-control" name="CVC" placeholder="CVC" required="" maxlength="3">
                                                             </div>
                                                         </div>
@@ -195,14 +177,14 @@
                                                     <div class="row">
                                                         <div class="col-xs-12">
                                                             <div class="form-group">
-                                                                <label>NAME OF CARD</label>
+                                                                <label>@localizer["KART SAHİBİNİN İSMİ"]</label>
                                                                 <input type="text" pattern="^[A-Za-z ]+$" class="form-control" name="nameCard" placeholder="NAME AND SURNAME" maxlength="20" minlength="3">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-xs-12">
-                                                            <button class="btn btn-primary" type="submit">Make a payment!</button>
+                                                            <button class="btn btn-primary" type="submit">@localizer["Ödeme Yap"]!</button>
                                                         </div>
                                                     </div>
                                                 </form>

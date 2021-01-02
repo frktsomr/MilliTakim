@@ -17,27 +17,27 @@
     <form asp-action="FutbolcuEkle" method="post" enctype="multipart/form-data">
         @localizer[@Html.DisplayNameFor(model => model.futbolcuAd)]
         <input asp-for="@futbolcu.futbolcuAd" class="form-control" />
-        <span asp-validation-for="@futbolcu.futbolcuAd" class="text-danger"></span>
+        <span asp-validation-for="@futbolcu.futbolcuAd" class="text-danger"></span><br />
 
         @localizer[@Html.DisplayNameFor(model => model.futbolcuSoyad)]
         <input asp-for="@futbolcu.futbolcuSoyad" class="form-control" />
-        <span asp-validation-for="@futbolcu.futbolcuSoyad" class="text-danger"></span>
+        <span asp-validation-for="@futbolcu.futbolcuSoyad" class="text-danger"></span><br />
 
         @localizer[@Html.DisplayNameFor(model => model.futbolcuYas)]
         <input asp-for="@futbolcu.futbolcuYas" value="" class="form-control" />
-        <span asp-validation-for="@futbolcu.futbolcuYas" class="text-danger"></span>
+        <span asp-validation-for="@futbolcu.futbolcuYas" class="text-danger"></span><br />
 
         @localizer[@Html.DisplayNameFor(model => model.futbolcuMarketDegeri)]
         <input asp-for="@futbolcu.futbolcuMarketDegeri" value="" class="form-control" />
-        <span asp-validation-for="@futbolcu.futbolcuMarketDegeri" class="text-danger"></span>
+        <span asp-validation-for="@futbolcu.futbolcuMarketDegeri" class="text-danger"></span><br />
 
         @Html.DisplayNameFor(model => model.futbolcuInsta)
         <input asp-for="@futbolcu.futbolcuInsta" class="form-control" />
-        <span asp-validation-for="@futbolcu.futbolcuInsta" class="text-danger"></span>
+        <span asp-validation-for="@futbolcu.futbolcuInsta" class="text-danger"></span><br />
 
         @Html.DisplayNameFor(model => model.futbolcuTwitter)
         <input asp-for="@futbolcu.futbolcuTwitter" class="form-control" />
-        <span asp-validation-for="@futbolcu.futbolcuTwitter" class="text-danger"></span>
+        <span asp-validation-for="@futbolcu.futbolcuTwitter" class="text-danger"></span><br />
 
         @localizer[@Html.DisplayNameFor(model => model.ProfilePicture)]<br />
         <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="https://bootdey.com/img/Content/avatar/avatar7.png">
