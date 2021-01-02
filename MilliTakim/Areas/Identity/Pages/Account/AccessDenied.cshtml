@@ -1,0 +1,10 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Access denied";
+}
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+<header>
+    <h1 class="text-danger">@localizer["Erişim Reddedildi"]</h1>
+    <p class="text-danger">@localizer["Bu kaynağa erişiminiz yok"].</p>
+</header>

@@ -77,15 +77,6 @@ namespace MilliTakim
                 //create the roles and seed them to the database
                 roleResult2 = await RoleManager.CreateAsync(new IdentityRole("User"));
             }
-            //Assign Admin role to the main User here we have given our newly registered 
-            //login id for Admin management
-
-        /*    AuthUser user = await UserManager.FindByEmailAsync("ekrem@outlook");
-            if (user != null)
-            {
-                await UserManager.AddToRoleAsync(user, "Admin");
-            }
-        */
 
             if(!dbContext.Users.Any(u => u.UserName == "ekrem"))
             {
@@ -118,11 +109,6 @@ namespace MilliTakim
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            //var supportedCultures = new[] { "tr", "en" };
-            //var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture(supportedCultures[0]).AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
-            //app.UseRequestLocalization(localizationOptions);
-
             app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
             app.UseAuthentication();
@@ -136,6 +122,12 @@ namespace MilliTakim
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Futbolcu}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Bilet}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Magaza}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
             CreateUserRoles(serviceProvider).Wait();

@@ -37,7 +37,7 @@ namespace MilliTakim.Areas.Identity.Pages.Account.Manage
         public class InputModel
         {
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Telefon Numarası")]
             [StringLength(10, ErrorMessage = "Lutfen telefon numaranizi dogru giriniz", MinimumLength = 10)]
             public string PhoneNumber { get; set; }
 
