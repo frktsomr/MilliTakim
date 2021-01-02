@@ -23,7 +23,7 @@ namespace MilliTakim.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Lütfen Geçerli Bir Ad giriniz")]
         [Display(Name = "Ürün Adı")]
         public string urunAdi { get; set; }
-        [Required]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Lütfen Geçerli Bir Fiyat")]
         [Display(Name = "Fiyat")]
         [RegularExpression("^[1-9]+([0-9])*$", ErrorMessage = "Lütfen Geçerli Bir Fiyat Giriniz")]
         public int fiyat { get; set; }

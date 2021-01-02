@@ -11,11 +11,11 @@ namespace MilliTakim.Areas.Identity.Data
     public class AuthUser : IdentityUser
     {
         [Column(TypeName = "Varchar(20)")]
-        [RegularExpression("^([a-zA-Z]+\\s)*[a-zA-Z]+$")]
+        [RegularExpression("^([a-zA-Z]+\\s)*[a-zA-Z]+$",ErrorMessage = "Lütfen Geçerli Bir Ad Giriniz")]
         public string Ad { get; set; }
 
         [Column(TypeName = "Varchar(20)")]
-        [RegularExpression("^([a-zA-Z]+\\s)*[a-zA-Z]+$")]
+        [RegularExpression("^([a-zA-Z]+\\s)*[a-zA-Z]+$", ErrorMessage = "Lütfen Geçerli Bir Soyad Giriniz")]
         public string Soyad { get; set; }
 
         public byte[] ProfilePicture { get; set; }

@@ -117,49 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Adı" xml:space="preserve">
-    <value>Name</value>
+  <data name="Lütfen Bir Mevki Seçiniz" xml:space="preserve">
+    <value>Select Position</value>
   </data>
-  <data name="Defans" xml:space="preserve">
-    <value>Defance</value>
+  <data name="Lütfen Bir Yaş Giriniz" xml:space="preserve">
+    <value>Please Enter a Age</value>
   </data>
-  <data name="Düzenle" xml:space="preserve">
-    <value>Edit</value>
+  <data name="Lütfen Geçerli Bir Ad Giriniz" xml:space="preserve">
+    <value>Please Enter a Valid Name</value>
   </data>
-  <data name="Ekle" xml:space="preserve">
-    <value>Add</value>
+  <data name="Lütfen Geçerli Bir Değer Giriniz" xml:space="preserve">
+    <value>Please Enter a Valid Value</value>
   </data>
-  <data name="Forvet" xml:space="preserve">
-    <value>Forward</value>
+  <data name="Lütfen Geçerli Bir Link Giriniz" xml:space="preserve">
+    <value>Please Enter a Valid Link</value>
   </data>
-  <data name="Futbolcularımız" xml:space="preserve">
-    <value>Footballers</value>
+  <data name="Lütfen Geçerli Bir Soyad Giriniz" xml:space="preserve">
+    <value>Please Enter a Valid Surname</value>
   </data>
-  <data name="Kaleci" xml:space="preserve">
-    <value>Goal Keeper</value>
-  </data>
-  <data name="Market Değeri" xml:space="preserve">
-    <value>Value</value>
-  </data>
-  <data name="Mevki" xml:space="preserve">
-    <value>Position</value>
-  </data>
-  <data name="Ortasaha" xml:space="preserve">
-    <value>Middle Fielder</value>
-  </data>
-  <data name="Profil Fotoğrafı" xml:space="preserve">
-    <value>Profile Picture</value>
-  </data>
-  <data name="Sil" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Soyadı" xml:space="preserve">
-    <value>Surname</value>
-  </data>
-  <data name="Türkiye Milli Takım Futbolcuları" xml:space="preserve">
-    <value>Turkish National Team Players</value>
-  </data>
-  <data name="Yaş" xml:space="preserve">
-    <value>Age</value>
+  <data name="Lütfen Geçerli Bir Yaş Giriniz (16-100)" xml:space="preserve">
+    <value>Please Enter a Valid Age (16-100)</value>
   </data>
 </root>

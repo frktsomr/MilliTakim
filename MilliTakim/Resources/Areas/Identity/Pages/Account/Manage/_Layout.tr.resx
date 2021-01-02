@@ -117,49 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Adı" xml:space="preserve">
-    <value>Name</value>
+  <data name="Change Your Account Settings" xml:space="preserve">
+    <value>Hesap Ayarlarını Değiştir</value>
   </data>
-  <data name="Defans" xml:space="preserve">
-    <value>Defance</value>
-  </data>
-  <data name="Düzenle" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="Ekle" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="Forvet" xml:space="preserve">
-    <value>Forward</value>
-  </data>
-  <data name="Futbolcularımız" xml:space="preserve">
-    <value>Footballers</value>
-  </data>
-  <data name="Kaleci" xml:space="preserve">
-    <value>Goal Keeper</value>
-  </data>
-  <data name="Market Değeri" xml:space="preserve">
-    <value>Value</value>
-  </data>
-  <data name="Mevki" xml:space="preserve">
-    <value>Position</value>
-  </data>
-  <data name="Ortasaha" xml:space="preserve">
-    <value>Middle Fielder</value>
-  </data>
-  <data name="Profil Fotoğrafı" xml:space="preserve">
-    <value>Profile Picture</value>
-  </data>
-  <data name="Sil" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Soyadı" xml:space="preserve">
-    <value>Surname</value>
-  </data>
-  <data name="Türkiye Milli Takım Futbolcuları" xml:space="preserve">
-    <value>Turkish National Team Players</value>
-  </data>
-  <data name="Yaş" xml:space="preserve">
-    <value>Age</value>
+  <data name="Manage Your Account" xml:space="preserve">
+    <value>Hesabını Yönet</value>
   </data>
 </root>
