@@ -42,77 +42,78 @@
 }
 
 
+<div style="max-width:500px;margin:auto;">
+    <section class="container">
+        <h1>@localizer["MAÇLAR"]</h1>
+        @if (Model != null)
+        {
 
-<section class="container">
-    <h1>@localizer["MAÇLAR"]</h1>
-    @if (Model != null)
-    {
-        <div class="row">
             @foreach (var item in Model)
             {
-
-                <article class="card fl-left">
-                    <section class="date">
-                        <time datetime="@DateTime.Today">
-                            <span>@DateTime.Today.Day</span><span>@DateTime.Now.ToString("MMMM")</span>
-                        </time>
-                    </section>
-                    <section class="card-cont">
-                        @if (DateTime.Today.Date >= item.macTarihi.Date || item.biletAdet <= 0)
-                        {
-                            <h3 class="ciz">@Html.DisplayFor(modelItem => item.macAdi)</h3>
-                        }
-                        else
-                        {
-                            <h3>@Html.DisplayFor(modelItem => item.macAdi)</h3>
-                        }
-                        <div class="even-date">
-                            <i class="fa fa-calendar"></i>
-                            <time>
-                                <span>    @Html.DisplayFor(modelItem => item.macTarihi)</span>
-                            </time>
-                        </div>
-                        <div class="even-info">
-                            <i class="fa fa-map-marker"></i>
-                            <p>
-                                @Html.DisplayFor(modelItem => item.macYer)
-                            </p>
-                            <p>
-                                @localizer["Kalan Bilet"] : @Html.DisplayFor(modelItem => item.biletAdet)
-                            </p>
-                        </div>
-                        <br />
-                        @if (DateTime.Today.Date >= item.macTarihi.Date)
-                        {
-                            <a style="background-color:black" href="#">@localizer["TARİHİ GEÇTİ"]</a>
-                        }
-                        else if (item.biletAdet <= 0)
-                        {
+    <div class="row">
+        <article class="card col-sm-12">
+            <section class="date">
+                <time datetime="@DateTime.Today">
+                    <span>@DateTime.Today.Day</span><span>@DateTime.Now.ToString("MMMM")</span>
+                </time>
+            </section>
+            <section class="card-cont">
+                @if (DateTime.Today.Date >= item.macTarihi.Date || item.biletAdet <= 0)
+                {
+                    <h3 class="ciz">@Html.DisplayFor(modelItem => item.macAdi)</h3>
+                }
+                else
+                {
+                    <h3>@Html.DisplayFor(modelItem => item.macAdi)</h3>
+                }
+                <div class="even-date">
+                    <i class="fa fa-calendar"></i>
+                    <time>
+                        <span>    @Html.DisplayFor(modelItem => item.macTarihi)</span>
+                    </time>
+                </div>
+                <div class="even-info">
+                    <i class="fa fa-map-marker"></i>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.macYer)
+                    </p>
+                    <p>
+                        @localizer["Kalan Bilet"] : @Html.DisplayFor(modelItem => item.biletAdet)
+                    </p>
+                </div>
+                <br />
+                @if (DateTime.Today.Date >= item.macTarihi.Date)
+                {
+                    <a style="background-color:black" href="#">@localizer["TARİHİ GEÇTİ"]</a>
+                }
+                else if (item.biletAdet <= 0)
+                {
                     <a style="background-color:gray" href="#">@localizer["TÜKENDİ"]</a>
-                        }
-                        else
-                        {
+                }
+                else
+                {
                     <a style="background-color: #F8504C" asp-area="" asp-controller="Bilet" asp-route-id="@item.biletId" asp-action="BiletSatinAl">@localizer["SATIN AL"]</a>
-                        }
-                    </section>
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
-                        {
-                            <a asp-action="BiletSil" asp-route-id="@item.biletId">@localizer["SİL"]</a> <br />
-                            <a asp-action="BiletDuzenle" asp-route-id="@item.biletId">@localizer["DÜZENLE"]</a>
-                        }
-                    }
-                </article>
+                }
+            </section>
+        </article>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
+            {
+                <a asp-action="BiletSil" asp-route-id="@item.biletId">@localizer["SİL"]  -         </a> <br />
+                <a asp-action="BiletDuzenle" asp-route-id="@item.biletId">        - @localizer["DÜZENLE"]</a>
             }
-        </div>
-    }
-    else
-    {
-        <p>Satista Bilet Yok</p>
-    }
-</section>
+        }
+    </div>
+            }
 
+        }
+        else
+        {
+            <p>Satista Bilet Yok</p>
+        }
+    </section>
+</div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

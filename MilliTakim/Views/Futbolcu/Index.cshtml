@@ -40,7 +40,7 @@
         <span asp-validation-for="@futbolcu.futbolcuTwitter" class="text-danger"></span><br />
 
         @localizer[@Html.DisplayNameFor(model => model.ProfilePicture)]<br />
-        <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="https://bootdey.com/img/Content/avatar/avatar7.png">
+        <img id="profilePicture" style="width:350px;height:350px; object-fit:cover" src="~/avatar7.png">
         <input type="file"
                accept=".png,.jpg,.jpeg,.gif,.tif"
                asp-for="@futbolcu.ProfilePicture"
@@ -59,26 +59,24 @@
             <p class="font-italic text-muted"> @localizer["Türkiye Milli Takım Futbolcuları"]</p>
         </div>
     </div>
-    <div class="row text-center">
-
         @if (Model != null)
         {
             <div class="row text-center">
                 @foreach (var item in Model)
                 {
-                    <div class="col-xl-4 col-sm-6 mb-5">
+                    <div class="col-sm-12 mb-5">
                         <div class="bg-white rounded shadow-sm py-5 px-4">
                             @if (item.ProfilePicture == null)
                             {
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                                <img src="~/avatar7.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                             }
                             else
                             {
                                 <img src="data:image/*;base64,@(Convert.ToBase64String(item.ProfilePicture))" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                             }
                             <h5 class="mb-0">@Html.DisplayFor(modelItem => item.futbolcuAd) @Html.DisplayFor(modelItem => item.futbolcuSoyad)</h5>
-                            <span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuYas)</span>
-                            <span class="small text-uppercase text-muted">@Html.DisplayFor(modelItem => item.futbolcuMarketDegeri)€</span>
+                            <span class="small text-uppercase text-muted"><b>@Html.DisplayFor(modelItem => item.futbolcuYas)</b></span><br />
+                            <span class="small text-uppercase text-muted"><b>@Html.DisplayFor(modelItem => item.futbolcuMarketDegeri) €</b></span>
                             <ul class="social mb-0 list-inline mt-3">
                                 @if (item.futbolcuInsta == null)
                                 {
@@ -101,7 +99,8 @@
                             {
                                 @if (await UserManager.IsInRoleAsync(await UserManager.GetUserAsync(User), "Admin"))
                                 {
-                        <a asp-action="FutbolcuSil" asp-route-id="@item.playerId"> @localizer["Sil"]</a>
+                                    <br />
+                        <a asp-action="FutbolcuSil" asp-route-id="@item.playerId"> @localizer["Sil"]</a><br />
                         <a asp-action="FutbolcuDuzenle" asp-route-id="@item.playerId"> @localizer["Düzenle"]</a>
                                 }
                             }
@@ -110,7 +109,6 @@
                 }
             </div>
         }
-    </div>
 </div>
 
 @section Scripts {

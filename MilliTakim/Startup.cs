@@ -35,7 +35,6 @@ namespace MilliTakim
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddSingleton(new ResourceManager("CustomerAPI.Rescources.Controllers.CustomerController", typeof(Startup).GetTypeInfo().Assembly));
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddRazorPages().AddRazorRuntimeCompilation();
@@ -78,15 +77,15 @@ namespace MilliTakim
                 roleResult2 = await RoleManager.CreateAsync(new IdentityRole("User"));
             }
 
-            if(!dbContext.Users.Any(u => u.UserName == "ekrem"))
+            if(!dbContext.Users.Any(u => u.UserName == "g181210070@sakarya.edu.tr"))
             {
                 var adminUser = new AuthUser
-                { UserName = "ekrem@outlook",
-                  Email = "ekrem@outlook",
+                { UserName = "g181210070@sakarya.edu.tr",
+                  Email = "g181210070@sakarya.edu.tr",
                   Ad = "Ekrem",
-                  Soyad = "Ozgur"
+                  Soyad = "Özgür"
                 };
-                var result = await UserManager.CreateAsync(adminUser, "ekrem123");
+                var result = await UserManager.CreateAsync(adminUser, "123");
                 await UserManager.AddToRoleAsync(adminUser, new IdentityRole("Admin").Name);
             }
         }
@@ -131,7 +130,6 @@ namespace MilliTakim
                 endpoints.MapRazorPages();
             });
             CreateUserRoles(serviceProvider).Wait();
-
         }
     }
 }
