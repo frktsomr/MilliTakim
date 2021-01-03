@@ -10,8 +10,8 @@ using MilliTakim.Data;
 namespace MilliTakim.Migrations.AuthDb
 {
     [DbContext(typeof(AuthDbContext))]
-    [Migration("20210101231733_deneme2")]
-    partial class deneme2
+    [Migration("20210103150629_authdb")]
+    partial class authdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

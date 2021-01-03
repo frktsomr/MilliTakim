@@ -70,6 +70,8 @@
                     <i class="fa fa-calendar"></i>
                     <time>
                         <span>    @Html.DisplayFor(modelItem => item.macTarihi)</span>
+                        <br />
+                        <span>    @localizer["FİYAT :"] @Html.DisplayFor(modelItem => item.biletFiyat)</span>
                     </time>
                 </div>
                 <div class="even-info">
@@ -80,6 +82,7 @@
                     <p>
                         @localizer["Kalan Bilet"] : @Html.DisplayFor(modelItem => item.biletAdet)
                     </p>
+                    
                 </div>
                 <br />
                 @if (DateTime.Today.Date >= item.macTarihi.Date)

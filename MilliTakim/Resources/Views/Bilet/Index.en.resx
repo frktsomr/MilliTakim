@@ -129,6 +129,9 @@
   <data name="Ekle" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="FİYAT :" xml:space="preserve">
+    <value>PRICE :</value>
+  </data>
   <data name="Kalan Bilet" xml:space="preserve">
     <value>Remaining Tickets</value>
   </data>

@@ -150,10 +150,10 @@
   <data name="Price" xml:space="preserve">
     <value>Bilet Fiyatı</value>
   </data>
+  <data name="PRICE :" xml:space="preserve">
+    <value>FİYAT :</value>
+  </data>
   <data name="Remaining Tickets" xml:space="preserve">
     <value>Kalan Bilet</value>
-  </data>
-  <data name="SOLD OUT" xml:space="preserve">
-    <value>TÜKENDİ</value>
   </data>
 </root>

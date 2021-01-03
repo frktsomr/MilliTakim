@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MilliTakim.Migrations
 {
-    public partial class deneme : Migration
+    public partial class webcontext : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
